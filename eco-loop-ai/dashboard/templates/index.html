@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoLoop AI - Building Optimization</title>
+    <title>EcoLoop AI - Optimization Command Center</title>
+    <!-- Use Inter font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Header -->
         <header class="header">
-            <h1>EcoLoop Enterprise Optimization</h1>
+            <div class="header-left">
+                <!-- SVG Logo Icon -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <h1>EcoLoop Optimization</h1>
+            </div>
             <div class="status-badge">
                 <div class="status-icon"></div>
                 System Autonomous
@@ -23,14 +31,22 @@
             <section class="panel" style="grid-column: 1 / -1;">
                 <h2>System Configuration</h2>
                 <form id="upload-form" class="setup-form">
-                    <div class="input-group">
-                        <label for="epw-file">Weather File (.epw)</label>
-                        <input type="file" id="epw-file" accept=".epw" required>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="epw-file" accept=".epw" required onchange="document.getElementById('epw-name').textContent = this.files[0].name">
+                        <div class="file-upload-display">
+                            <span class="file-upload-label">Weather Data</span>
+                            <span class="file-upload-text" id="epw-name">Select .epw file...</span>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="idf-file">Building Model (.idf)</label>
-                        <input type="file" id="idf-file" accept=".idf" required>
+                    
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="idf-file" accept=".idf" required onchange="document.getElementById('idf-name').textContent = this.files[0].name">
+                        <div class="file-upload-display">
+                            <span class="file-upload-label">Building Model</span>
+                            <span class="file-upload-text" id="idf-name">Select .idf file...</span>
+                        </div>
                     </div>
+
                     <button type="submit" class="btn-primary">Initialize System</button>
                 </form>
                 <p id="upload-status" style="margin-top: 1rem; font-size: 0.875rem; color: var(--warning); font-weight: 500;"></p>
@@ -41,59 +57,71 @@
                 <h2>Building Metrics</h2>
                 <div class="metric-grid">
                     <div class="metric-card">
-                        <span class="label">Indoor Temp</span>
-                        <span class="value" id="indoor-temp">--°C</span>
+                        <div class="label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+                            Indoor Temp
+                        </div>
+                        <div class="value" id="indoor-temp">--°C</div>
                     </div>
                     <div class="metric-card">
-                        <span class="label">Outdoor Temp</span>
-                        <span class="value" id="outdoor-temp">--°C</span>
+                        <div class="label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path><path d="M22 12h-3"></path><path d="M5 12H2"></path></svg>
+                            Outdoor Temp
+                        </div>
+                        <div class="value" id="outdoor-temp">--°C</div>
                     </div>
                     <div class="metric-card">
-                        <span class="label">Energy Usage</span>
-                        <span class="value" id="energy">-- kWh</span>
+                        <div class="label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                            Energy
+                        </div>
+                        <div class="value" id="energy">-- kWh</div>
                     </div>
                     <div class="metric-card">
-                        <span class="label">Occupancy</span>
-                        <span class="value" id="occupancy">--</span>
+                        <div class="label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            Occupancy
+                        </div>
+                        <div class="value" id="occupancy">--</div>
                     </div>
                     <div class="metric-card">
-                        <span class="label">Carbon (kgCO2)</span>
-                        <span class="value" id="carbon">--</span>
+                        <div class="label">Carbon (CO2)</div>
+                        <div class="value" id="carbon">--</div>
                     </div>
                     <div class="metric-card">
-                        <span class="label">Comfort (PMV)</span>
-                        <span class="value" id="pmv">--</span>
+                        <div class="label">Comfort (PMV)</div>
+                        <div class="value" id="pmv">--</div>
                     </div>
                     <div class="metric-card">
-                        <span class="label">IAQ (CO2)</span>
-                        <span class="value" id="iaq">--</span>
+                        <div class="label">IAQ (PPM)</div>
+                        <div class="value" id="iaq">--</div>
                     </div>
                     <div class="metric-card">
-                        <span class="label">HVAC Status</span>
-                        <span class="value" id="hvac-status">--</span>
+                        <div class="label">HVAC Status</div>
+                        <div class="value" id="hvac-status">--</div>
                     </div>
                 </div>
             </section>
 
-            <!-- AI Decision Panel -->
+            <!-- Optimization Engine Panel -->
             <section class="panel ai-panel">
                 <h2>Optimization Engine</h2>
                 <div class="ai-details">
                     <div class="ai-item">
                         <span class="label">Current Strategy</span>
-                        <p id="ai-strategy" class="highlight">Analyzing...</p>
+                        <div class="value highlight" id="ai-strategy">Analyzing...</div>
                     </div>
                     <div class="ai-item">
                         <span class="label">Est. Savings</span>
-                        <p id="ai-savings" class="success">0.0 kWh</p>
+                        <div class="value success" id="ai-savings">0.0 kWh</div>
                     </div>
                     <div class="ai-item" style="grid-column: 1 / -1;">
                         <span class="label">Control Action</span>
-                        <p id="ai-action">--</p>
+                        <div class="value" id="ai-action">--</div>
                     </div>
                     <div class="ai-item" style="grid-column: 1 / -1;">
                         <span class="label">Reasoning</span>
-                        <p id="ai-reason">Waiting for telemetry...</p>
+                        <div class="value" id="ai-reason">Waiting for telemetry...</div>
                     </div>
                 </div>
             </section>
@@ -109,17 +137,27 @@
             <!-- Operations Log Panel -->
             <section class="panel">
                 <h2>Operations Log</h2>
-                <div class="log-header">
-                    <div>Time</div>
-                    <div>Strategy</div>
-                    <div>Action</div>
-                    <div>Savings</div>
-                    <div>Reasoning</div>
+                <div class="log-container">
+                    <table class="log-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Strategy</th>
+                                <th>Action</th>
+                                <th>Savings</th>
+                                <th>Reasoning</th>
+                            </tr>
+                        </thead>
+                        <tbody id="decision-log">
+                            <!-- JS populated -->
+                        </tbody>
+                    </table>
                 </div>
-                <div class="log-container" id="decision-log"></div>
                 <div class="total-savings">
-                    <span>Total Efficiency Gains</span>
-                    <span class="success"><span id="total-saved">0</span> kWh (<span id="percent-saved">0</span>%)</span>
+                    <div class="total-savings-label">Total Efficiency Gains</div>
+                    <div class="total-savings-value">
+                        <span id="total-saved">0</span> kWh (<span id="percent-saved">0</span>%)
+                    </div>
                 </div>
             </section>
         </main>
