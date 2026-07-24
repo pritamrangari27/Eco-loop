@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoLoop AI - Optimization Command Center</title>
-    <!-- Use Inter font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>EcoLoop AI - Monochrome</title>
+    <!-- Fonts: Inter for headers/ui, Roboto Mono for data -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -14,10 +16,6 @@
         <!-- Header -->
         <header class="header">
             <div class="header-left">
-                <!-- SVG Logo Icon -->
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);">
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                </svg>
                 <h1>EcoLoop Optimization</h1>
             </div>
             <div class="status-badge">
@@ -47,9 +45,12 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-primary">Initialize System</button>
+                    <button type="submit" class="btn-primary">
+                        Initialize System
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
                 </form>
-                <p id="upload-status" style="margin-top: 1rem; font-size: 0.875rem; color: var(--warning); font-weight: 500;"></p>
+                <p id="upload-status" style="margin-top: 1rem; font-family: 'Roboto Mono', monospace; font-size: 0.875rem; color: var(--warning);"></p>
             </section>
 
             <!-- Telemetry Panel -->
@@ -57,31 +58,19 @@
                 <h2>Building Metrics</h2>
                 <div class="metric-grid">
                     <div class="metric-card">
-                        <div class="label">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
-                            Indoor Temp
-                        </div>
+                        <div class="label">Indoor Temp</div>
                         <div class="value" id="indoor-temp">--°C</div>
                     </div>
                     <div class="metric-card">
-                        <div class="label">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path><path d="M22 12h-3"></path><path d="M5 12H2"></path></svg>
-                            Outdoor Temp
-                        </div>
+                        <div class="label">Outdoor Temp</div>
                         <div class="value" id="outdoor-temp">--°C</div>
                     </div>
                     <div class="metric-card">
-                        <div class="label">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-                            Energy
-                        </div>
+                        <div class="label">Energy</div>
                         <div class="value" id="energy">-- kWh</div>
                     </div>
                     <div class="metric-card">
-                        <div class="label">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                            Occupancy
-                        </div>
+                        <div class="label">Occupancy</div>
                         <div class="value" id="occupancy">--</div>
                     </div>
                     <div class="metric-card">

@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize Chart.js
     const ctx = document.getElementById('energyChart').getContext('2d');
     
-    // Gradient for the chart
+    // Vibrant multi-color gradient for the AI line
     let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)'); /* Blue 500 */
-    gradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+    gradient.addColorStop(0, 'rgba(0, 229, 255, 0.4)'); /* Electric Cyan */
+    gradient.addColorStop(1, 'rgba(138, 43, 226, 0.0)'); /* Fade to Indigo/transparent */
 
     const chartConfig = {
         type: 'line',
@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     label: 'Baseline Energy (kWh)',
                     data: [],
-                    borderColor: '#f59e0b',
-                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    borderColor: '#ff4500', /* Neon Orange */
+                    backgroundColor: 'rgba(255, 69, 0, 0.1)',
                     borderWidth: 2,
                     fill: false,
                     tension: 0.4,
@@ -59,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     label: 'AI Optimized (kWh)',
                     data: [],
-                    borderColor: '#3b82f6', /* Blue 500 */
+                    borderColor: '#00e5ff', /* Electric Cyan */
                     backgroundColor: gradient,
-                    borderWidth: 2,
+                    borderWidth: 3,
                     fill: true,
                     tension: 0.4,
                     pointRadius: 0
@@ -72,16 +72,17 @@ document.addEventListener("DOMContentLoaded", () => {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: true, labels: { color: '#a1a1aa' } }
+                legend: { display: true, labels: { color: '#000000', font: { family: 'Inter', weight: 600 } } },
+                tooltip: { backgroundColor: '#000000', titleColor: '#ffffff', bodyColor: '#ffffff' }
             },
             scales: {
                 x: {
-                    grid: { color: '#27272a' },
-                    ticks: { color: '#a1a1aa' }
+                    grid: { color: '#e4e4e7', drawBorder: false },
+                    ticks: { color: '#52525b', font: { family: 'Roboto Mono' } }
                 },
                 y: {
-                    grid: { color: '#27272a' },
-                    ticks: { color: '#a1a1aa' }
+                    grid: { color: '#e4e4e7', drawBorder: false },
+                    ticks: { color: '#52525b', font: { family: 'Roboto Mono' } }
                 }
             },
             animation: {
@@ -100,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('indoor-temp').innerText = `${data.telemetry.indoor_temp}°C`;
         document.getElementById('outdoor-temp').innerText = `${data.telemetry.outdoor_temp}°C`;
         document.getElementById('energy').innerText = `${data.telemetry.energy} kWh`;
-        document.getElementById('carbon').innerText = `${data.telemetry.carbon_emissions || 0} kgCO2`;
+        document.getElementById('carbon').innerText = `${data.telemetry.carbon_emissions || 0} kg`;
         document.getElementById('occupancy').innerText = data.telemetry.occupancy;
         document.getElementById('pmv').innerText = data.telemetry.pmv;
         document.getElementById('iaq').innerText = data.telemetry.iaq_co2 || '--';
