@@ -18,6 +18,7 @@ class RealEnergyPlusSimulator:
         self.pmv = 0.5
         self.hvac_status = "IDLE"
         self.cooling_setpoint = 24.0
+        self.carbon_emissions = 0.0
         
         self.step_event = threading.Event()
         self.action_event = threading.Event()
@@ -65,6 +66,7 @@ class RealEnergyPlusSimulator:
             self.pmv = (self.indoor_temp - 24.0) * 0.5
             self.energy = 20 + (cooling_effect * 50) + (self.occupancy * 0.5)
             self.energy += random.uniform(-2, 2)
+            self.carbon_emissions = self.energy * 0.45  # Assuming 0.45 kgCO2/kWh grid intensity
             self.hvac_status = "ON" if self.energy > 30 else "IDLE"
             return
             
@@ -79,6 +81,7 @@ class RealEnergyPlusSimulator:
             "indoor_temp": round(self.indoor_temp, 2),
             "outdoor_temp": round(self.outdoor_temp, 2),
             "energy": round(self.energy, 2),
+            "carbon_emissions": round(self.carbon_emissions, 2),
             "occupancy": int(self.occupancy),
             "pmv": round(self.pmv, 2),
             "hvac_status": self.hvac_status

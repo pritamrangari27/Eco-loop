@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('indoor-temp').innerText = `${data.telemetry.indoor_temp}°C`;
         document.getElementById('outdoor-temp').innerText = `${data.telemetry.outdoor_temp}°C`;
         document.getElementById('energy').innerText = `${data.telemetry.energy} kWh`;
+        document.getElementById('carbon').innerText = `${data.telemetry.carbon_emissions || 0} kgCO2`;
         document.getElementById('occupancy').innerText = data.telemetry.occupancy;
         document.getElementById('pmv').innerText = data.telemetry.pmv;
         document.getElementById('hvac-status').innerText = data.telemetry.hvac_status;

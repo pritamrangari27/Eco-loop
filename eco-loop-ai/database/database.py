@@ -13,6 +13,7 @@ def init_db():
             indoor_temp REAL,
             outdoor_temp REAL,
             energy REAL,
+            carbon REAL,
             occupancy INTEGER,
             pmv REAL,
             strategy TEXT,
@@ -28,12 +29,13 @@ def log_decision(telemetry, strategy, reason, action, savings):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute('''
-        INSERT INTO decisions (indoor_temp, outdoor_temp, energy, occupancy, pmv, strategy, reason, action, estimated_savings)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO decisions (indoor_temp, outdoor_temp, energy, carbon, occupancy, pmv, strategy, reason, action, estimated_savings)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ''', (
         telemetry.get('indoor_temp'),
         telemetry.get('outdoor_temp'),
         telemetry.get('energy'),
+        telemetry.get('carbon_emissions'),
         telemetry.get('occupancy'),
         telemetry.get('pmv'),
         strategy,
