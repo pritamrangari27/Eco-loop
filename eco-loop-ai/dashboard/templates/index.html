@@ -3,153 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoLoop AI - Monochrome</title>
-    <!-- Fonts: Inter for headers/ui, Roboto Mono for data -->
+    <title>EcoLoop AI - Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="dashboard-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-left">
-                <h1>EcoLoop Optimization</h1>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #3b82f6;">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                EcoLoop AI
             </div>
-            <div class="status-badge">
-                <div class="status-icon"></div>
-                System Autonomous
-            </div>
-        </header>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Optimization
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    Analytics
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    Settings
+                </a>
+            </nav>
+        </aside>
 
-        <main class="grid-container">
-            <!-- Setup Panel -->
-            <section class="panel" style="grid-column: 1 / -1;">
-                <h2>System Configuration</h2>
-                <form id="upload-form" class="setup-form">
-                    <div class="file-upload-wrapper">
-                        <input type="file" id="epw-file" accept=".epw" required onchange="document.getElementById('epw-name').textContent = this.files[0].name">
-                        <div class="file-upload-display">
-                            <span class="file-upload-label">Weather Data</span>
-                            <span class="file-upload-text" id="epw-name">Select .epw file...</span>
-                        </div>
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            <!-- Top Nav -->
+            <header class="top-nav">
+                <div class="nav-title">Building Command Center</div>
+                <div class="top-nav-right">
+                    <div class="status-badge">
+                        <div class="status-icon"></div>
+                        System Autonomous
                     </div>
+                </div>
+            </header>
+
+            <!-- Scrollable Content Area -->
+            <main class="main-content">
+                <div class="dashboard-grid">
                     
-                    <div class="file-upload-wrapper">
-                        <input type="file" id="idf-file" accept=".idf" required onchange="document.getElementById('idf-name').textContent = this.files[0].name">
-                        <div class="file-upload-display">
-                            <span class="file-upload-label">Building Model</span>
-                            <span class="file-upload-text" id="idf-name">Select .idf file...</span>
+                    <!-- Top Section: Config & Metrics -->
+                    <div class="split-grid">
+                        <!-- Setup Widget -->
+                        <div class="panel">
+                            <h2 class="panel-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                System Configuration
+                            </h2>
+                            <form id="upload-form" class="setup-form">
+                                <div class="file-upload-wrapper">
+                                    <input type="file" id="epw-file" accept=".epw" required onchange="document.getElementById('epw-name').textContent = this.files[0].name">
+                                    <div class="file-upload-display">
+                                        <span class="file-upload-label">Weather Data</span>
+                                        <span class="file-upload-text" id="epw-name">Select .epw file...</span>
+                                    </div>
+                                </div>
+                                <div class="file-upload-wrapper">
+                                    <input type="file" id="idf-file" accept=".idf" required onchange="document.getElementById('idf-name').textContent = this.files[0].name">
+                                    <div class="file-upload-display">
+                                        <span class="file-upload-label">Building Model</span>
+                                        <span class="file-upload-text" id="idf-name">Select .idf file...</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-primary">Initialize</button>
+                            </form>
+                            <p id="upload-status" style="margin-top: 1rem; font-family: 'Roboto Mono', monospace; font-size: 0.875rem; color: var(--warning);"></p>
+                        </div>
+
+                        <!-- Metric Grid Widget -->
+                        <div class="panel">
+                            <h2 class="panel-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg>
+                                Live Telemetry
+                            </h2>
+                            <div class="metric-grid">
+                                <div class="metric-card">
+                                    <div class="label">In Temp</div>
+                                    <div class="value" id="indoor-temp">--°C</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="label">Out Temp</div>
+                                    <div class="value" id="outdoor-temp">--°C</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="label">Energy</div>
+                                    <div class="value" id="energy">-- kWh</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="label">Occupancy</div>
+                                    <div class="value" id="occupancy">--</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="label">CO2</div>
+                                    <div class="value" id="carbon">--</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="label">PMV</div>
+                                    <div class="value" id="pmv">--</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="label">IAQ</div>
+                                    <div class="value" id="iaq">--</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="label">HVAC</div>
+                                    <div class="value" id="hvac-status">--</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-primary">
-                        Initialize System
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </button>
-                </form>
-                <p id="upload-status" style="margin-top: 1rem; font-family: 'Roboto Mono', monospace; font-size: 0.875rem; color: var(--warning);"></p>
-            </section>
+                    <!-- Middle Section: AI Engine & Charts -->
+                    <div class="split-grid">
+                        <!-- Optimization Engine Widget -->
+                        <div class="panel">
+                            <h2 class="panel-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                Optimization Engine
+                            </h2>
+                            <div class="ai-details">
+                                <div class="ai-item">
+                                    <span class="label">Current Strategy</span>
+                                    <div class="value highlight" id="ai-strategy">Analyzing...</div>
+                                </div>
+                                <div class="ai-item">
+                                    <span class="label">Est. Savings</span>
+                                    <div class="value success" id="ai-savings">0.0 kWh</div>
+                                </div>
+                                <div class="ai-item">
+                                    <span class="label">Control Action</span>
+                                    <div class="value" id="ai-action">--</div>
+                                </div>
+                                <div class="ai-item">
+                                    <span class="label">Reasoning</span>
+                                    <div class="value" id="ai-reason">Waiting for telemetry...</div>
+                                </div>
+                            </div>
+                        </div>
 
-            <!-- Telemetry Panel -->
-            <section class="panel">
-                <h2>Building Metrics</h2>
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <div class="label">Indoor Temp</div>
-                        <div class="value" id="indoor-temp">--°C</div>
+                        <!-- Chart Widget -->
+                        <div class="panel">
+                            <h2 class="panel-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                                Energy Analytics
+                            </h2>
+                            <div class="chart-container">
+                                <canvas id="energyChart"></canvas>
+                            </div>
+                        </div>
                     </div>
-                    <div class="metric-card">
-                        <div class="label">Outdoor Temp</div>
-                        <div class="value" id="outdoor-temp">--°C</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="label">Energy</div>
-                        <div class="value" id="energy">-- kWh</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="label">Occupancy</div>
-                        <div class="value" id="occupancy">--</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="label">Carbon (CO2)</div>
-                        <div class="value" id="carbon">--</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="label">Comfort (PMV)</div>
-                        <div class="value" id="pmv">--</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="label">IAQ (PPM)</div>
-                        <div class="value" id="iaq">--</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="label">HVAC Status</div>
-                        <div class="value" id="hvac-status">--</div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Optimization Engine Panel -->
-            <section class="panel ai-panel">
-                <h2>Optimization Engine</h2>
-                <div class="ai-details">
-                    <div class="ai-item">
-                        <span class="label">Current Strategy</span>
-                        <div class="value highlight" id="ai-strategy">Analyzing...</div>
+                    <!-- Bottom Section: Logs -->
+                    <div class="panel">
+                        <h2 class="panel-header">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                            Operations Log
+                        </h2>
+                        <div class="log-container">
+                            <table class="log-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Strategy</th>
+                                        <th>Action</th>
+                                        <th>Savings</th>
+                                        <th>Reasoning</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="decision-log">
+                                    <!-- JS populated -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="total-savings">
+                            <div class="total-savings-label">Total Efficiency Gains</div>
+                            <div class="total-savings-value">
+                                <span id="total-saved">0</span> kWh (<span id="percent-saved">0</span>%)
+                            </div>
+                        </div>
                     </div>
-                    <div class="ai-item">
-                        <span class="label">Est. Savings</span>
-                        <div class="value success" id="ai-savings">0.0 kWh</div>
-                    </div>
-                    <div class="ai-item" style="grid-column: 1 / -1;">
-                        <span class="label">Control Action</span>
-                        <div class="value" id="ai-action">--</div>
-                    </div>
-                    <div class="ai-item" style="grid-column: 1 / -1;">
-                        <span class="label">Reasoning</span>
-                        <div class="value" id="ai-reason">Waiting for telemetry...</div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Charts Panel -->
-            <section class="panel">
-                <h2>Energy Analytics</h2>
-                <div class="chart-container">
-                    <canvas id="energyChart"></canvas>
                 </div>
-            </section>
-
-            <!-- Operations Log Panel -->
-            <section class="panel">
-                <h2>Operations Log</h2>
-                <div class="log-container">
-                    <table class="log-table">
-                        <thead>
-                            <tr>
-                                <th>Time</th>
-                                <th>Strategy</th>
-                                <th>Action</th>
-                                <th>Savings</th>
-                                <th>Reasoning</th>
-                            </tr>
-                        </thead>
-                        <tbody id="decision-log">
-                            <!-- JS populated -->
-                        </tbody>
-                    </table>
-                </div>
-                <div class="total-savings">
-                    <div class="total-savings-label">Total Efficiency Gains</div>
-                    <div class="total-savings-value">
-                        <span id="total-saved">0</span> kWh (<span id="percent-saved">0</span>%)
-                    </div>
-                </div>
-            </section>
-        </main>
+            </main>
+        </div>
     </div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
