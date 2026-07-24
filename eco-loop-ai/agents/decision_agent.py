@@ -30,6 +30,19 @@ async def fetch_mcp_context():
         print(f"MCP Connection Error: {e}")
         return json.dumps({"error": str(e)})
 
+async def execute_mcp_tool(tool_name, arguments):
+    mcp_script = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'mcp_server.py')
+    server_params = StdioServerParameters(command="python", args=[mcp_script], env=os.environ.copy())
+    
+    try:
+        async with stdio_client(server_params) as (read, write):
+            async with ClientSession(read, write) as session:
+                await session.initialize()
+                result = await session.call_tool(tool_name, arguments=arguments)
+                return result.content[0].text
+    except Exception as e:
+        return f"Error executing MCP tool: {str(e)}"
+
 def get_ai_decision(telemetry):
     try:
         prompt_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'prompts', 'system_prompt.txt')
@@ -109,9 +122,10 @@ def get_ai_decision(telemetry):
                 # Check if the LLM called our tool
                 if "tool_calls" in message and len(message["tool_calls"]) > 0:
                     tool_call = message["tool_calls"][0]
-                    if tool_call["function"]["name"] == "execute_hvac_action":
-                        args = tool_call["function"]["arguments"]
-                        
+                    tool_name = tool_call["function"]["name"]
+                    args = tool_call["function"]["arguments"]
+                    
+                    if tool_name == "execute_hvac_action":
                         # Apply Self-Correction Loop: Validate the tool call!
                         val_res = validate_strategy(args.get("strategy"), telemetry)
                         
@@ -121,14 +135,25 @@ def get_ai_decision(telemetry):
                             messages.append(message) # Append the assistant's tool call
                             messages.append({
                                 "role": "tool",
-                                "name": "execute_hvac_action",
+                                "name": tool_name,
                                 "content": f"ERROR: Strategy rejected by safety validator. Reason: {val_res['action']}. Please try a different, safer strategy."
                             })
                             continue # Loop back and let LLM self-correct!
                             
                         # If accepted, return the arguments
                         return args
-                
+                    
+                    elif tool_name in ["read_idf_metadata", "get_simulation_errors"]:
+                        # True Agentic Execution: Execute the file-parsing MCP tool
+                        mcp_result = asyncio.run(execute_mcp_tool(tool_name, args))
+                        messages.append(message)
+                        messages.append({
+                            "role": "tool",
+                            "name": tool_name,
+                            "content": mcp_result
+                        })
+                        continue # Loop back so the LLM can read the file and then call execute_hvac_action
+
                 # If no tool calls were made or parsing failed, fallback
                 return fallback_decision(telemetry)
             else:
