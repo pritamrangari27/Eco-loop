@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Gradient for the chart
     let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(56, 189, 248, 0.5)');
-    gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+    gradient.addColorStop(0, 'rgba(37, 99, 235, 0.2)'); /* Blue 600 */
+    gradient.addColorStop(1, 'rgba(37, 99, 235, 0.0)');
 
     const chartConfig = {
         type: 'line',
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     label: 'AI Optimized (kWh)',
                     data: [],
-                    borderColor: '#38bdf8',
+                    borderColor: '#2563eb', /* Blue 600 */
                     backgroundColor: gradient,
                     borderWidth: 2,
                     fill: true,
@@ -72,16 +72,16 @@ document.addEventListener("DOMContentLoaded", () => {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: true, labels: { color: '#94a3b8' } }
+                legend: { display: true, labels: { color: '#64748b' } }
             },
             scales: {
                 x: {
-                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                    ticks: { color: '#94a3b8' }
+                    grid: { color: '#e2e8f0' },
+                    ticks: { color: '#64748b' }
                 },
                 y: {
-                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                    ticks: { color: '#94a3b8' }
+                    grid: { color: '#e2e8f0' },
+                    ticks: { color: '#64748b' }
                 }
             },
             animation: {
@@ -161,12 +161,12 @@ document.addEventListener("DOMContentLoaded", () => {
             history.forEach(row => {
                 const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
                 const logEntry = `
-                    <div class="log-entry" style="margin-bottom:10px; border-bottom:1px solid #334155; padding-bottom:5px;">
+                    <div class="log-entry">
                         <div class="log-time">${timeStr}</div>
-                        <strong>Strategy:</strong> ${row.strategy}<br>
-                        <strong>Action:</strong> ${row.action}<br>
-                        <strong>Savings:</strong> <span style="color: var(--success);">+${row.estimated_savings || 0} kWh</span><br>
-                        <em>${row.reason}</em>
+                        <div>${row.strategy}</div>
+                        <div>${row.action}</div>
+                        <div class="success">+${row.estimated_savings || 0} kWh</div>
+                        <div>${row.reason}</div>
                     </div>
                 `;
                 logContainer.insertAdjacentHTML('beforeend', logEntry);

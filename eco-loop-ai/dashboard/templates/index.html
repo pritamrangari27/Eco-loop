@@ -4,41 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoLoop AI - Building Optimization</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="dashboard-container">
-        <header class="header glass-panel">
-            <h1>EcoLoop AI</h1>
+        <header class="header">
+            <h1>EcoLoop Enterprise Optimization</h1>
             <div class="status-badge">
-                <span class="dot pulse"></span>
+                <div class="status-icon"></div>
                 System Autonomous
             </div>
         </header>
 
         <main class="grid-container">
             <!-- Setup Panel -->
-            <section class="setup-panel glass-panel" style="grid-column: 1 / -1;">
-                <h2>Simulation Setup</h2>
-                <form id="upload-form" style="display: flex; gap: 1rem; align-items: center;">
-                    <div>
-                        <label for="epw-file" class="label">Weather File (.epw):</label>
-                        <input type="file" id="epw-file" accept=".epw" required style="display: block; margin-top: 0.5rem; color: var(--text-primary);">
+            <section class="panel" style="grid-column: 1 / -1;">
+                <h2>System Configuration</h2>
+                <form id="upload-form" class="setup-form">
+                    <div class="input-group">
+                        <label for="epw-file">Weather File (.epw)</label>
+                        <input type="file" id="epw-file" accept=".epw" required>
                     </div>
-                    <div>
-                        <label for="idf-file" class="label">Building Model (.idf):</label>
-                        <input type="file" id="idf-file" accept=".idf" required style="display: block; margin-top: 0.5rem; color: var(--text-primary);">
+                    <div class="input-group">
+                        <label for="idf-file">Building Model (.idf)</label>
+                        <input type="file" id="idf-file" accept=".idf" required>
                     </div>
-                    <button type="submit" style="margin-top: 1.5rem; padding: 0.5rem 1rem; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Initialize Simulation</button>
+                    <button type="submit" class="btn-primary">Initialize System</button>
                 </form>
-                <p id="upload-status" style="margin-top: 1rem; font-size: 0.875rem; color: var(--warning);"></p>
+                <p id="upload-status" style="margin-top: 1rem; font-size: 0.875rem; color: var(--warning); font-weight: 500;"></p>
             </section>
 
             <!-- Telemetry Panel -->
-            <section class="telemetry-panel glass-panel">
-                <h2>Building Status</h2>
+            <section class="panel">
+                <h2>Building Metrics</h2>
                 <div class="metric-grid">
                     <div class="metric-card">
                         <span class="label">Indoor Temp</span>
@@ -65,7 +65,7 @@
                         <span class="value" id="pmv">--</span>
                     </div>
                     <div class="metric-card">
-                        <span class="label">IAQ (CO2 ppm)</span>
+                        <span class="label">IAQ (CO2)</span>
                         <span class="value" id="iaq">--</span>
                     </div>
                     <div class="metric-card">
@@ -76,30 +76,30 @@
             </section>
 
             <!-- AI Decision Panel -->
-            <section class="ai-panel glass-panel glow">
-                <h2>AI Decision Engine</h2>
+            <section class="panel ai-panel">
+                <h2>Optimization Engine</h2>
                 <div class="ai-details">
                     <div class="ai-item">
                         <span class="label">Current Strategy</span>
-                        <h3 id="ai-strategy" class="highlight">Analyzing...</h3>
-                    </div>
-                    <div class="ai-item">
-                        <span class="label">Reasoning</span>
-                        <p id="ai-reason">Waiting for telemetry...</p>
-                    </div>
-                    <div class="ai-item">
-                        <span class="label">Control Action</span>
-                        <p id="ai-action">--</p>
+                        <p id="ai-strategy" class="highlight">Analyzing...</p>
                     </div>
                     <div class="ai-item">
                         <span class="label">Est. Savings</span>
                         <p id="ai-savings" class="success">0.0 kWh</p>
                     </div>
+                    <div class="ai-item" style="grid-column: 1 / -1;">
+                        <span class="label">Control Action</span>
+                        <p id="ai-action">--</p>
+                    </div>
+                    <div class="ai-item" style="grid-column: 1 / -1;">
+                        <span class="label">Reasoning</span>
+                        <p id="ai-reason">Waiting for telemetry...</p>
+                    </div>
                 </div>
             </section>
 
             <!-- Charts Panel -->
-            <section class="charts-panel glass-panel">
+            <section class="panel">
                 <h2>Energy Analytics</h2>
                 <div class="chart-container">
                     <canvas id="energyChart"></canvas>
@@ -107,11 +107,19 @@
             </section>
 
             <!-- Operations Log Panel -->
-            <section class="log-panel glass-panel">
-                <h2>AI Decision Log</h2>
-                <div id="decision-log"></div>
+            <section class="panel">
+                <h2>Operations Log</h2>
+                <div class="log-header">
+                    <div>Time</div>
+                    <div>Strategy</div>
+                    <div>Action</div>
+                    <div>Savings</div>
+                    <div>Reasoning</div>
+                </div>
+                <div class="log-container" id="decision-log"></div>
                 <div class="total-savings">
-                    Est. Savings: <span id="total-saved">0</span> kWh (<span id="percent-saved">0</span>%)
+                    <span>Total Efficiency Gains</span>
+                    <span class="success"><span id="total-saved">0</span> kWh (<span id="percent-saved">0</span>%)</span>
                 </div>
             </section>
         </main>
