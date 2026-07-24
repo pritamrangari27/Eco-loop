@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLoop AI - Building Optimization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="header glass-panel">
+            <h1>EcoLoop AI</h1>
+            <div class="status-badge">
+                <span class="dot pulse"></span>
+                System Autonomous
+            </div>
+        </header>
+
+        <main class="grid-container">
+            <!-- Telemetry Panel -->
+            <section class="telemetry-panel glass-panel">
+                <h2>Building Status</h2>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <span class="label">Indoor Temp</span>
+                        <span class="value" id="indoor-temp">--°C</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="label">Outdoor Temp</span>
+                        <span class="value" id="outdoor-temp">--°C</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="label">Energy Usage</span>
+                        <span class="value" id="energy">-- kWh</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="label">Occupancy</span>
+                        <span class="value" id="occupancy">--</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="label">Comfort (PMV)</span>
+                        <span class="value" id="pmv">--</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="label">HVAC Status</span>
+                        <span class="value" id="hvac-status">--</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Decision Panel -->
+            <section class="ai-panel glass-panel glow">
+                <h2>AI Decision Engine</h2>
+                <div class="ai-details">
+                    <div class="ai-item">
+                        <span class="label">Current Strategy</span>
+                        <h3 id="ai-strategy" class="highlight">Analyzing...</h3>
+                    </div>
+                    <div class="ai-item">
+                        <span class="label">Reasoning</span>
+                        <p id="ai-reason">Waiting for telemetry...</p>
+                    </div>
+                    <div class="ai-item">
+                        <span class="label">Control Action</span>
+                        <p id="ai-action">--</p>
+                    </div>
+                    <div class="ai-item">
+                        <span class="label">Est. Savings</span>
+                        <p id="ai-savings" class="success">0.0 kWh</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Panel -->
+            <section class="charts-panel glass-panel">
+                <h2>Energy Analytics</h2>
+                <div class="chart-container">
+                    <canvas id="energyChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Operations Log Panel -->
+            <section class="logs-panel glass-panel">
+                <h2>Operations Log</h2>
+                <div class="log-container" id="operations-log">
+                    <!-- Logs will be populated here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
