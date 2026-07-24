@@ -1,9 +1,9 @@
 import requests
 import json
 import os
-import asyncio
-from mcp import ClientSession, StdioServerParameters
-from mcp.client.stdio import stdio_client
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from mcp_server import get_building_telemetry, read_idf_metadata, get_simulation_errors
 from config.settings import OLLAMA_API_URL, MODEL_NAME
 from safety.validator import validate_strategy
 
@@ -16,30 +16,20 @@ def fallback_decision(telemetry):
         return {"strategy": "Energy Saving", "reason": "Low occupancy or overcooled. Saving energy.", "action": "Reduce Cooling"}
     return {"strategy": "Balanced Mode", "reason": "Conditions are stable.", "action": "Maintain Setpoint"}
 
-async def fetch_mcp_context():
-    mcp_script = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'mcp_server.py')
-    server_params = StdioServerParameters(command="python", args=[mcp_script], env=os.environ.copy())
-    
+def fetch_mcp_context():
     try:
-        async with stdio_client(server_params) as (read, write):
-            async with ClientSession(read, write) as session:
-                await session.initialize()
-                result = await session.call_tool("get_building_telemetry", arguments={})
-                return result.content[0].text
+        return get_building_telemetry()
     except Exception as e:
-        print(f"MCP Connection Error: {e}")
+        print(f"MCP Context Error: {e}")
         return json.dumps({"error": str(e)})
 
-async def execute_mcp_tool(tool_name, arguments):
-    mcp_script = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'mcp_server.py')
-    server_params = StdioServerParameters(command="python", args=[mcp_script], env=os.environ.copy())
-    
+def execute_mcp_tool(tool_name, arguments):
     try:
-        async with stdio_client(server_params) as (read, write):
-            async with ClientSession(read, write) as session:
-                await session.initialize()
-                result = await session.call_tool(tool_name, arguments=arguments)
-                return result.content[0].text
+        if tool_name == "read_idf_metadata":
+            return read_idf_metadata(arguments.get("file_path", ""))
+        elif tool_name == "get_simulation_errors":
+            return get_simulation_errors(arguments.get("file_path", ""))
+        return f"Tool {tool_name} not found."
     except Exception as e:
         return f"Error executing MCP tool: {str(e)}"
 
@@ -49,7 +39,7 @@ def get_ai_decision(telemetry):
         with open(prompt_path, 'r') as f:
             system_prompt = f.read()
 
-        mcp_context = asyncio.run(fetch_mcp_context())
+        mcp_context = fetch_mcp_context()
         if "error" in mcp_context:
             mcp_context = json.dumps(telemetry, indent=2)
 
@@ -145,7 +135,7 @@ def get_ai_decision(telemetry):
                     
                     elif tool_name in ["read_idf_metadata", "get_simulation_errors"]:
                         # True Agentic Execution: Execute the file-parsing MCP tool
-                        mcp_result = asyncio.run(execute_mcp_tool(tool_name, args))
+                        mcp_result = execute_mcp_tool(tool_name, args)
                         messages.append(message)
                         messages.append({
                             "role": "tool",
