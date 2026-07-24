@@ -44,3 +44,23 @@ graph TD;
     G -->|Approved Action| H[HVAC Controller];
     H -->|Setpoints| A;
 ```
+
+## Advanced Strategies
+
+### Prompt Engineering Strategies
+The agentic pipeline relies heavily on deterministic JSON enforcement. The `system_prompt.txt` acts as the master instruction set, chaining several techniques:
+1. **Role Prompting**: Framing the LLM as an expert HVAC control system manager.
+2. **Context Injection**: Pre-loading the prompt with structured telemetry parsed via MCP (including time-series history and constraints).
+3. **Structured Output Enforcement**: Explicitly defining a rigid JSON schema (`strategy`, `reason`, `action`) and using function-calling tools to eliminate parsing errors.
+
+### Prompt Latency Management
+Executing a local LLM in a real-time control loop introduces processing delays. Latency is managed via:
+1. **Asynchronous Hand-offs**: The EnergyPlus callback suspends only the physics timestep while the LLM processes data in an isolated thread, preventing full UI blocks.
+2. **Context Truncation**: Limiting the MCP database history query to the latest state vector instead of full time-series logs, reducing input tokens.
+3. **Small-Parameter Models**: Using efficient localized models (like Qwen2.5) optimized for short-context tool calling rather than massive, slower foundational models.
+
+### Approach to Handling Lengthy Simulation Logs
+EnergyPlus generates massive `.eso` and `.err` files that exceed standard LLM context windows. We bypass this limitation by:
+1. **Real-time API Interception**: Instead of parsing post-simulation CSV/ESO files, we tap directly into the active C++ memory space via `pyenergyplus.api` handles.
+2. **MCP Tool Abstraction**: For static file reads, we deploy custom FastMCP tools (`read_idf_metadata`, `get_simulation_errors`) that filter and slice lengthy text files down to fewer than 50 relevant lines before injecting them into the LLM context.
+3. **Telemetry Database**: We log only structured, down-sampled data points to `ecoloop.db` for the frontend to render efficiently.

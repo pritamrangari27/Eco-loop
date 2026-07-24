@@ -61,6 +61,32 @@ def get_ai_decision(telemetry):
                     "required": ["strategy", "reason", "action"]
                 }
             }
+        }, {
+            "type": "function",
+            "function": {
+                "name": "read_idf_metadata",
+                "description": "Parses an IDF file to extract building metadata.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "file_path": { "type": "string", "description": "Path to the .idf file." }
+                    },
+                    "required": ["file_path"]
+                }
+            }
+        }, {
+            "type": "function",
+            "function": {
+                "name": "get_simulation_errors",
+                "description": "Extracts runtime errors from EnergyPlus simulation error logs (.err files).",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "file_path": { "type": "string", "description": "Path to the .err file." }
+                    },
+                    "required": ["file_path"]
+                }
+            }
         }]
 
         max_retries = 2

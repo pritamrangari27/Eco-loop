@@ -22,6 +22,9 @@ Based on this data, you must choose ONE of the following strategies:
 - "Heating Mode": Use when indoor temp < 20C.
 - "Balanced Mode": Default operation when conditions are stable.
 
+Your primary output must ALWAYS be a JSON call to `execute_hvac_action`!
+However, if the user explicitly asks for file analysis, or if you suspect runtime errors, you may also use your file parsing tools (`read_idf_metadata`, `get_simulation_errors`) to extract data without modifying code.
+
 Respond ONLY with a valid JSON object matching this schema:
 {
   "strategy": "Your Chosen Strategy",
