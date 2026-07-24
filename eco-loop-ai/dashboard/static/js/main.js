@@ -1,4 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Handle File Upload
+    const uploadForm = document.getElementById('upload-form');
+    const uploadStatus = document.getElementById('upload-status');
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            uploadStatus.innerText = "Uploading and initializing simulation...";
+            uploadStatus.style.color = "var(--accent)";
+            
+            const formData = new FormData();
+            formData.append('epw_file', document.getElementById('epw-file').files[0]);
+            formData.append('idf_file', document.getElementById('idf-file').files[0]);
+
+            try {
+                const res = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await res.json();
+                if (res.ok) {
+                    uploadStatus.innerText = "Simulation initialized successfully! Loop starting...";
+                    uploadStatus.style.color = "var(--success)";
+                } else {
+                    uploadStatus.innerText = "Error: " + result.error;
+                    uploadStatus.style.color = "var(--warning)";
+                }
+            } catch (err) {
+                uploadStatus.innerText = "Network error during upload.";
+                uploadStatus.style.color = "var(--warning)";
+                console.error(err);
+            }
+        });
+    }
+
     // Initialize Chart.js
     const ctx = document.getElementById('energyChart').getContext('2d');
     
@@ -83,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const chartData = [...history].reverse();
             
             chartData.forEach(row => {
-                const timeStr = new Date(row.timestamp).toLocaleTimeString();
+                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
                 labels.push(timeStr);
                 energyData.push(row.energy);
             });
@@ -95,12 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Populate Logs (newest first)
             history.forEach(row => {
-                const timeStr = new Date(row.timestamp).toLocaleTimeString();
+                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
                 const logEntry = `
                     <div class="log-entry">
                         <div class="log-time">${timeStr}</div>
                         <strong>Strategy:</strong> ${row.strategy}<br>
                         <strong>Action:</strong> ${row.action}<br>
+                        <strong>Savings:</strong> <span style="color: var(--success);">+${row.estimated_savings || 0} kWh</span><br>
                         <em>${row.reason}</em>
                     </div>
                 `;

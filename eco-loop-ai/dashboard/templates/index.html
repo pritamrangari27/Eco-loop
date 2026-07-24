@@ -19,6 +19,23 @@
         </header>
 
         <main class="grid-container">
+            <!-- Setup Panel -->
+            <section class="setup-panel glass-panel" style="grid-column: 1 / -1;">
+                <h2>Simulation Setup</h2>
+                <form id="upload-form" style="display: flex; gap: 1rem; align-items: center;">
+                    <div>
+                        <label for="epw-file" class="label">Weather File (.epw):</label>
+                        <input type="file" id="epw-file" accept=".epw" required style="display: block; margin-top: 0.5rem; color: var(--text-primary);">
+                    </div>
+                    <div>
+                        <label for="idf-file" class="label">Building Model (.idf):</label>
+                        <input type="file" id="idf-file" accept=".idf" required style="display: block; margin-top: 0.5rem; color: var(--text-primary);">
+                    </div>
+                    <button type="submit" style="margin-top: 1.5rem; padding: 0.5rem 1rem; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Initialize Simulation</button>
+                </form>
+                <p id="upload-status" style="margin-top: 1rem; font-size: 0.875rem; color: var(--warning);"></p>
+            </section>
+
             <!-- Telemetry Panel -->
             <section class="telemetry-panel glass-panel">
                 <h2>Building Status</h2>

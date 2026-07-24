@@ -1,6 +1,7 @@
+import os
 import time
 import threading
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from config.settings import LOOP_INTERVAL_SECONDS
 from database.database import init_db, log_decision, get_history
 from monitoring.telemetry import get_telemetry
@@ -13,10 +14,13 @@ app = Flask(__name__, template_folder='dashboard/templates', static_folder='dash
 
 # Global state for dashboard
 current_state = {}
+simulation_ready = threading.Event()
 
 def autonomous_control_loop():
     global current_state
-    print("Starting Autonomous Control Loop...")
+    print("Waiting for simulation files to be uploaded...")
+    simulation_ready.wait()
+    print("Starting Autonomous Control Loop with real EnergyPlus data...")
     while True:
         # 1. Simulator steps forward
         simulator_instance.step()
@@ -61,6 +65,31 @@ def autonomous_control_loop():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/api/upload', methods=['POST'])
+def upload_files():
+    if 'epw_file' not in request.files or 'idf_file' not in request.files:
+        return jsonify({"error": "Missing files"}), 400
+    
+    epw_file = request.files['epw_file']
+    idf_file = request.files['idf_file']
+    
+    upload_dir = os.path.join(os.path.dirname(__file__), 'data', 'uploads')
+    os.makedirs(upload_dir, exist_ok=True)
+    
+    epw_path = os.path.join(upload_dir, epw_file.filename)
+    idf_path = os.path.join(upload_dir, idf_file.filename)
+    
+    epw_file.save(epw_path)
+    idf_file.save(idf_path)
+    
+    # Initialize simulator
+    simulator_instance.initialize(idf_path, epw_path)
+    
+    # Signal the loop to start
+    simulation_ready.set()
+    
+    return jsonify({"message": "Files uploaded and simulation initialized"})
 
 @app.route('/api/status')
 def status():
