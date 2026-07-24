@@ -129,4 +129,18 @@ class RealEnergyPlusSimulator:
             # Actuate via API if handles are known
             pass
 
+    def reset(self):
+        self.indoor_temp = 24.0
+        self.outdoor_temp = 30.0
+        self.energy = 80.0
+        self.occupancy = 20
+        self.pmv = 0.5
+        self.hvac_status = "IDLE"
+        self.cooling_setpoint = 24.0
+        self.carbon_emissions = 0.0
+        self.baseline_energy = 0.0
+        self.iaq_co2 = 400.0
+        self.step_event.clear()
+        self.action_event.clear()
+
 simulator_instance = RealEnergyPlusSimulator()

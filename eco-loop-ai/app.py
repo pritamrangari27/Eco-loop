@@ -3,7 +3,7 @@ import time
 import threading
 from flask import Flask, render_template, jsonify, request
 from config.settings import LOOP_INTERVAL_SECONDS
-from database.database import init_db, log_decision, get_history
+from database.database import init_db, log_decision, get_history, reset_db
 from monitoring.telemetry import get_telemetry
 from agents.decision_agent import get_ai_decision
 from safety.validator import validate_strategy
@@ -64,6 +64,11 @@ def autonomous_control_loop():
 
 @app.route('/')
 def index():
+    global current_state, simulation_ready
+    current_state = {}
+    simulation_ready.clear()
+    reset_db()
+    simulator_instance.reset()
     return render_template('index.html')
 
 @app.route('/api/upload', methods=['POST'])

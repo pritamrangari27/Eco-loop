@@ -28,6 +28,13 @@ def init_db():
     conn.commit()
     conn.close()
 
+def reset_db():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM decisions')
+    conn.commit()
+    conn.close()
+
 def log_decision(telemetry, strategy, reason, action, estimated_savings=0):
     """
     Logs the telemetry and the AI's decision to the database.
