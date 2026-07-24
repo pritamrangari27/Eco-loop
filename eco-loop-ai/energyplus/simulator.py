@@ -19,6 +19,8 @@ class RealEnergyPlusSimulator:
         self.hvac_status = "IDLE"
         self.cooling_setpoint = 24.0
         self.carbon_emissions = 0.0
+        self.baseline_energy = 0.0
+        self.iaq_co2 = 400.0  # Base CO2 ppm
         
         self.step_event = threading.Event()
         self.action_event = threading.Event()
@@ -61,12 +63,33 @@ class RealEnergyPlusSimulator:
             self.outdoor_temp += random.uniform(-0.5, 0.5)
             self.occupancy = max(0, min(100, self.occupancy + random.randint(-5, 5)))
             heat_gain = (self.outdoor_temp - self.indoor_temp) * 0.1
-            cooling_effect = max(0, (self.indoor_temp - self.cooling_setpoint) * 0.5)
-            self.indoor_temp += heat_gain - cooling_effect + (self.occupancy * 0.05)
+            
+            # Forward Injection logic to update EnergyPlus Active State (Actuators)
+            try:
+                # Example of fetching actuator handle and setting value directly in EP memory
+                act_handle = state.api.exchange.get_actuator_handle(self.ep_state, "Zone Temperature Control", "Cooling Setpoint", "ZONE 1")
+                if act_handle > 0:
+                    state.api.exchange.set_actuator_value(self.ep_state, act_handle, self.cooling_setpoint)
+            except Exception as e:
+                pass # Handled internally if EP is mocking
+
+            cooling_effect = (24.0 - self.cooling_setpoint) * 0.2 if self.cooling_setpoint < 24.0 else 0
+            self.indoor_temp += (self.outdoor_temp - self.indoor_temp) * 0.1 - cooling_effect + (self.occupancy * 0.05)
             self.pmv = (self.indoor_temp - 24.0) * 0.5
+            
+            # Baseline energy if we did not have AI optimization (fixed setpoint at 22C)
+            baseline_cooling_effect = (24.0 - 22.0) * 0.2
+            self.baseline_energy = 20 + (baseline_cooling_effect * 50) + (self.occupancy * 0.5) + random.uniform(-1, 1)
+
             self.energy = 20 + (cooling_effect * 50) + (self.occupancy * 0.5)
             self.energy += random.uniform(-2, 2)
             self.carbon_emissions = self.energy * 0.45  # Assuming 0.45 kgCO2/kWh grid intensity
+            
+            # Simulated IAQ (CO2 rises with occupancy, falls with HVAC ventilation)
+            ventilation_rate = 1.0 if self.hvac_status == "ON" else 0.2
+            self.iaq_co2 += (self.occupancy * 15) - (self.iaq_co2 - 400) * ventilation_rate * 0.1
+            self.iaq_co2 = max(400.0, self.iaq_co2)
+
             self.hvac_status = "ON" if self.energy > 30 else "IDLE"
             return
             
@@ -81,9 +104,11 @@ class RealEnergyPlusSimulator:
             "indoor_temp": round(self.indoor_temp, 2),
             "outdoor_temp": round(self.outdoor_temp, 2),
             "energy": round(self.energy, 2),
+            "baseline_energy": round(self.baseline_energy, 2),
             "carbon_emissions": round(self.carbon_emissions, 2),
             "occupancy": int(self.occupancy),
             "pmv": round(self.pmv, 2),
+            "iaq_co2": round(self.iaq_co2, 1),
             "hvac_status": self.hvac_status
         }
 

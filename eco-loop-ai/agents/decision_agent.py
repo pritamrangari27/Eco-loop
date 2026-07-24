@@ -5,6 +5,7 @@ import asyncio
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from config.settings import OLLAMA_API_URL, MODEL_NAME
+from safety.validator import validate_strategy
 
 def fallback_decision(telemetry):
     pmv = telemetry.get('pmv', 0)
@@ -16,23 +17,13 @@ def fallback_decision(telemetry):
     return {"strategy": "Balanced Mode", "reason": "Conditions are stable.", "action": "Maintain Setpoint"}
 
 async def fetch_mcp_context():
-    """
-    Connects to the true MCP server via stdio and invokes the get_building_telemetry tool.
-    This fulfills the hackathon requirement of integrating via Model Context Protocol (MCP).
-    """
     mcp_script = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'mcp_server.py')
-    
-    server_params = StdioServerParameters(
-        command="python",
-        args=[mcp_script],
-        env=os.environ.copy()
-    )
+    server_params = StdioServerParameters(command="python", args=[mcp_script], env=os.environ.copy())
     
     try:
         async with stdio_client(server_params) as (read, write):
             async with ClientSession(read, write) as session:
                 await session.initialize()
-                # Call the tool exposed by the FastMCP server
                 result = await session.call_tool("get_building_telemetry", arguments={})
                 return result.content[0].text
     except Exception as e:
@@ -45,27 +36,80 @@ def get_ai_decision(telemetry):
         with open(prompt_path, 'r') as f:
             system_prompt = f.read()
 
-        # Query the MCP server for the context
         mcp_context = asyncio.run(fetch_mcp_context())
-        
-        # Fallback to direct telemetry if DB/MCP failed
         if "error" in mcp_context:
             mcp_context = json.dumps(telemetry, indent=2)
 
-        payload = {
-            "model": MODEL_NAME,
-            "prompt": f"{system_prompt}\n\n[MCP Context Transfer]\n{mcp_context}\n\nPlease output only JSON.",
-            "stream": False,
-            "format": "json"
-        }
-        
-        response = requests.post(OLLAMA_API_URL, json=payload, timeout=8)
-        if response.status_code == 200:
-            result = response.json()
-            return json.loads(result.get("response", "{}"))
-        else:
-            print(f"Ollama error: {response.status_code}")
-            return fallback_decision(telemetry)
+        # Build messages for Chat API with Tools
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"[MCP Context Transfer]\n{mcp_context}\n\nPlease analyze the telemetry and execute the appropriate HVAC strategy."}
+        ]
+
+        tools = [{
+            "type": "function",
+            "function": {
+                "name": "execute_hvac_action",
+                "description": "Executes the chosen HVAC strategy based on telemetry analysis.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "strategy": { "type": "string", "description": "The chosen strategy name." },
+                        "reason": { "type": "string", "description": "Reasoning for the strategy." },
+                        "action": { "type": "string", "description": "The physical action to take." }
+                    },
+                    "required": ["strategy", "reason", "action"]
+                }
+            }
+        }]
+
+        max_retries = 2
+        for attempt in range(max_retries):
+            payload = {
+                "model": MODEL_NAME,
+                "messages": messages,
+                "tools": tools,
+                "stream": False
+            }
+            
+            # Using /api/chat instead of /api/generate for tool calling support
+            chat_url = OLLAMA_API_URL.replace("/api/generate", "/api/chat")
+            response = requests.post(chat_url, json=payload, timeout=12)
+            
+            if response.status_code == 200:
+                result = response.json()
+                message = result.get("message", {})
+                
+                # Check if the LLM called our tool
+                if "tool_calls" in message and len(message["tool_calls"]) > 0:
+                    tool_call = message["tool_calls"][0]
+                    if tool_call["function"]["name"] == "execute_hvac_action":
+                        args = tool_call["function"]["arguments"]
+                        
+                        # Apply Self-Correction Loop: Validate the tool call!
+                        val_res = validate_strategy(args.get("strategy"), telemetry)
+                        
+                        # If the validator forcefully rejected it (Override)
+                        if "rejected" in val_res["action"]:
+                            # Feed the error back to the LLM
+                            messages.append(message) # Append the assistant's tool call
+                            messages.append({
+                                "role": "tool",
+                                "name": "execute_hvac_action",
+                                "content": f"ERROR: Strategy rejected by safety validator. Reason: {val_res['action']}. Please try a different, safer strategy."
+                            })
+                            continue # Loop back and let LLM self-correct!
+                            
+                        # If accepted, return the arguments
+                        return args
+                
+                # If no tool calls were made or parsing failed, fallback
+                return fallback_decision(telemetry)
+            else:
+                print(f"Ollama error: {response.status_code}")
+                return fallback_decision(telemetry)
+                
+        return fallback_decision(telemetry)
     except Exception as e:
         print(f"Failed to reach Ollama: {e}")
         return fallback_decision(telemetry)

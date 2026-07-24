@@ -39,6 +39,23 @@ def validate_strategy(strategy, telemetry):
         validated_action = "Heating mode not active in this season."
         cooling_setpoint = 26.0
         
+    elif strategy == "Ventilation Required":
+        if telemetry.get('iaq_co2', 400) > 800:
+            cooling_setpoint = 23.5
+            validated_action = "Increasing ventilation to reduce CO2."
+        else:
+            strategy = "Balanced Mode (Safety Override)"
+            cooling_setpoint = 24.0
+            validated_action = "IAQ is safe. Ventilation override rejected."
+
+    elif strategy == "Peak Demand Reduction":
+        cooling_setpoint = 26.5
+        validated_action = "Capping energy use. Setpoint increased to 26.5°C"
+        
+    elif strategy == "Carbon Reduction":
+        cooling_setpoint = 25.5
+        validated_action = "Optimizing for low carbon footprint. Setpoint: 25.5°C"
+
     else: # Balanced
         cooling_setpoint = 24.0
         validated_action = "Maintaining optimal 24°C"

@@ -8,10 +8,13 @@ You will receive real-time telemetry data in JSON format:
   "energy": float (kWh),
   "carbon_emissions": float (kgCO2),
   "occupancy": int,
-  "pmv": float (Predicted Mean Vote, ideal is 0.0, range -3 to +3)
+  "pmv": float (Predicted Mean Vote, ideal is 0.0, range -3 to +3),
+  "iaq_co2": float (CO2 ppm, ideal < 1000)
 }
 
 Based on this data, you must choose ONE of the following strategies:
+- "Ventilation Required": Use when iaq_co2 > 1000 ppm to increase fresh air.
+- "Peak Demand Reduction": Use when energy approaches high grid demand to cap power.
 - "Carbon Reduction": Use when carbon_emissions are rapidly increasing and comfort allows for slight deviations.
 - "Energy Saving": Use when occupancy is low or PMV is slightly negative (too cool).
 - "Comfort Priority": Use when occupancy is high and PMV > 0.5 (too warm).

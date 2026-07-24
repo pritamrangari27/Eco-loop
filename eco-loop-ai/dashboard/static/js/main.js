@@ -45,22 +45,34 @@ document.addEventListener("DOMContentLoaded", () => {
         type: 'line',
         data: {
             labels: [],
-            datasets: [{
-                label: 'Energy Usage (kWh)',
-                data: [],
-                borderColor: '#38bdf8',
-                backgroundColor: gradient,
-                borderWidth: 2,
-                fill: true,
-                tension: 0.4,
-                pointRadius: 0
-            }]
+            datasets: [
+                {
+                    label: 'Baseline Energy (kWh)',
+                    data: [],
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 0
+                },
+                {
+                    label: 'AI Optimized (kWh)',
+                    data: [],
+                    borderColor: '#38bdf8',
+                    backgroundColor: gradient,
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }
+            ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: false }
+                legend: { display: true, labels: { color: '#94a3b8' } }
             },
             scales: {
                 x: {
@@ -91,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('carbon').innerText = `${data.telemetry.carbon_emissions || 0} kgCO2`;
         document.getElementById('occupancy').innerText = data.telemetry.occupancy;
         document.getElementById('pmv').innerText = data.telemetry.pmv;
+        document.getElementById('iaq').innerText = data.telemetry.iaq_co2 || '--';
         document.getElementById('hvac-status').innerText = data.telemetry.hvac_status;
 
         // AI Panel
@@ -108,11 +121,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const res = await fetch('/api/history');
             const history = await res.json();
             
-            const logContainer = document.getElementById('operations-log');
+            const logContainer = document.getElementById('decision-log');
+            if(!logContainer) return;
             logContainer.innerHTML = '';
             
             const labels = [];
             const energyData = [];
+            const baselineData = [];
+            let totalSaved = 0;
+            let totalBaseline = 0;
 
             // History comes ordered DESC from DB, reverse for chart (oldest first)
             const chartData = [...history].reverse();
@@ -121,18 +138,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
                 labels.push(timeStr);
                 energyData.push(row.energy);
+                baselineData.push(row.baseline_energy || row.energy);
+                
+                totalSaved += (row.estimated_savings || 0);
+                totalBaseline += (row.baseline_energy || row.energy);
             });
 
             // Update Chart
             energyChart.data.labels = labels;
-            energyChart.data.datasets[0].data = energyData;
+            energyChart.data.datasets[0].data = baselineData;
+            energyChart.data.datasets[1].data = energyData;
             energyChart.update();
+            
+            // Update Totals
+            document.getElementById('total-saved').innerText = totalSaved.toFixed(1);
+            if (totalBaseline > 0) {
+                const percent = (totalSaved / totalBaseline) * 100;
+                document.getElementById('percent-saved').innerText = percent.toFixed(1);
+            }
 
             // Populate Logs (newest first)
             history.forEach(row => {
                 const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
                 const logEntry = `
-                    <div class="log-entry">
+                    <div class="log-entry" style="margin-bottom:10px; border-bottom:1px solid #334155; padding-bottom:5px;">
                         <div class="log-time">${timeStr}</div>
                         <strong>Strategy:</strong> ${row.strategy}<br>
                         <strong>Action:</strong> ${row.action}<br>

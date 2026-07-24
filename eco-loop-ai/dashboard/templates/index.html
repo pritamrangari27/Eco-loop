@@ -65,6 +65,10 @@
                         <span class="value" id="pmv">--</span>
                     </div>
                     <div class="metric-card">
+                        <span class="label">IAQ (CO2 ppm)</span>
+                        <span class="value" id="iaq">--</span>
+                    </div>
+                    <div class="metric-card">
                         <span class="label">HVAC Status</span>
                         <span class="value" id="hvac-status">--</span>
                     </div>
@@ -103,10 +107,11 @@
             </section>
 
             <!-- Operations Log Panel -->
-            <section class="logs-panel glass-panel">
-                <h2>Operations Log</h2>
-                <div class="log-container" id="operations-log">
-                    <!-- Logs will be populated here -->
+            <section class="log-panel glass-panel">
+                <h2>AI Decision Log</h2>
+                <div id="decision-log"></div>
+                <div class="total-savings">
+                    Est. Savings: <span id="total-saved">0</span> kWh (<span id="percent-saved">0</span>%)
                 </div>
             </section>
         </main>
