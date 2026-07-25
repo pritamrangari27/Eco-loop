@@ -2,6 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize Lucide Icons
     lucide.createIcons();
 
+    // SPA Navigation Logic
+    const navItems = document.querySelectorAll('.nav-item');
+    const screens = document.querySelectorAll('.screen');
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = item.getAttribute('data-target');
+            if(!targetId) return;
+
+            navItems.forEach(n => n.classList.remove('active'));
+            item.classList.add('active');
+            
+            screens.forEach(s => s.classList.remove('active'));
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
+
     // Clock Logic
     function updateClock() {
         const now = new Date();
@@ -14,7 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         
         document.getElementById('clock-time').innerText = timeStr;
         document.getElementById('clock-date').innerText = dateStr;
-        document.getElementById('last-sync').innerText = `Last Sync: ${timeStr}`;
+        
+        const syncEl = document.getElementById('last-sync');
+        if(syncEl) syncEl.innerText = `Last Sync: ${timeStr}`;
     }
     setInterval(updateClock, 1000);
     updateClock();
@@ -57,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Chart.defaults.color = "#6B7280";
     Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(27, 35, 32, 0.9)';
 
-    // Energy Line Chart
+    // 1. Overview Energy Line Chart
     const energyCtx = document.getElementById('energyChart');
     const energyChartConfig = {
         type: 'line',
@@ -105,13 +124,37 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     let energyChart = energyCtx ? new Chart(energyCtx, energyChartConfig) : null;
 
-    // PMV Gauge Chart (Doughnut)
+    // 2. Analytics Full Energy Chart (Clone of Overview)
+    const analyticsEnergyCtx = document.getElementById('analyticsEnergyChart');
+    let analyticsEnergyChart = analyticsEnergyCtx ? new Chart(analyticsEnergyCtx, JSON.parse(JSON.stringify(energyChartConfig))) : null;
+
+    // 3. Analytics Temperature Trends Chart
+    const tempCtx = document.getElementById('tempChart');
+    const tempChartConfig = {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [
+                { label: 'Indoor Temp (°C)', data: [], borderColor: '#16A34A', tension: 0.4, fill: false },
+                { label: 'Outdoor Temp (°C)', data: [], borderColor: '#F59E0B', tension: 0.4, fill: false }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'top', align: 'start' } },
+            scales: { x: { grid: { display: false } }, y: { grid: { color: '#E7E8EB' } } }
+        }
+    };
+    let tempChart = tempCtx ? new Chart(tempCtx, tempChartConfig) : null;
+
+    // 4. PMV Gauge Chart (Doughnut)
     const gaugeCtx = document.getElementById('gaugeChart');
     const gaugeConfig = {
         type: 'doughnut',
         data: {
             datasets: [{
-                data: [0, 6], // Dynamic [value, remaining] (total scale 6, from -3 to +3)
+                data: [0, 6],
                 backgroundColor: ['#16A34A', '#E7E8EB'],
                 borderWidth: 0,
                 cutout: '80%',
@@ -134,13 +177,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return ["Comfortable", "var(--success)"];
     }
 
-    // Update Dashboard UI
+    // Update Dashboard Top Metrics
     function updateDashboard(data) {
         if (!data || !data.telemetry) return;
 
         const t = data.telemetry;
         
-        // Top Metrics
         document.getElementById('indoor-temp').innerText = `${t.indoor_temp.toFixed(2)}°C`;
         document.getElementById('outdoor-temp').innerText = `${t.outdoor_temp.toFixed(1)}°C`;
         document.getElementById('energy').innerText = `${t.energy.toFixed(1)} kWh`;
@@ -148,26 +190,22 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('pmv').innerText = t.pmv.toFixed(1);
         document.getElementById('hvac-status').innerText = t.hvac_status;
 
-        // Dynamic statuses
         const [pmvText, pmvColor] = getComfortStatus(t.pmv);
         document.getElementById('pmv-status').innerText = pmvText;
         document.getElementById('pmv-status').style.color = pmvColor;
         document.getElementById('indoor-status').innerText = pmvText;
         document.getElementById('indoor-status').style.color = pmvColor;
 
-        // Bottom Env Row
         document.getElementById('humidity').innerText = '62%';
         document.getElementById('iaq').innerText = `${t.iaq_co2 || 400} ppm`;
         document.getElementById('carbon').innerText = `${(t.carbon_emissions || 0).toFixed(1)} kgCO2`;
 
         // Update Gauge
         if (gaugeChart) {
-            // Scale -3 to +3 maps to 0 to 6
             let mappedVal = t.pmv + 3;
             if (mappedVal < 0) mappedVal = 0;
             if (mappedVal > 6) mappedVal = 6;
             
-            // Color based on value
             let color = '#16A34A';
             if (mappedVal < 1.5 || mappedVal > 4.5) color = '#EF4444';
             else if (mappedVal < 2.5 || mappedVal > 3.5) color = '#F59E0B';
@@ -190,56 +228,85 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Load History
-    async function fetchHistory() {
-        try {
-            const res = await fetch('/api/history');
-            const history = await res.json();
+    // Global History State
+    let currentHistoryData = [];
+    let currentLogLimit = 20;
+
+    // Filter Logic
+    const filterEl = document.getElementById('analytics-limit-filter');
+    if (filterEl) {
+        filterEl.addEventListener('change', (e) => {
+            currentLogLimit = parseInt(e.target.value);
+            renderHistoryData();
+        });
+    }
+
+    // Render Data into DOM & Charts
+    function renderHistoryData() {
+        if (!currentHistoryData || currentHistoryData.length === 0) return;
+
+        // Take last N elements based on limit filter
+        const historyToUse = currentHistoryData.slice(-currentLogLimit);
+
+        const labels = [];
+        const energyData = [];
+        const baselineData = [];
+        const indoorData = [];
+        const outdoorData = [];
+        let totalSaved = 0;
+        let totalBaseline = 0;
+
+        historyToUse.forEach(row => {
+            const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+            labels.push(timeStr);
+            energyData.push(row.energy);
+            baselineData.push(row.baseline_energy || row.energy);
+            indoorData.push(row.indoor_temp || 24);
+            outdoorData.push(row.outdoor_temp || 30);
             
-            const logContainer = document.getElementById('log-timeline');
-            if(!logContainer) return;
+            totalSaved += (row.estimated_savings || 0);
+            totalBaseline += (row.baseline_energy || row.energy);
+        });
+
+        // 1. Update Overview Chart
+        if (energyChart) {
+            energyChart.data.labels = labels;
+            energyChart.data.datasets[0].data = baselineData;
+            energyChart.data.datasets[1].data = energyData;
+            energyChart.update();
+        }
+        
+        // 2. Update Analytics Energy Chart
+        if (analyticsEnergyChart) {
+            analyticsEnergyChart.data.labels = labels;
+            analyticsEnergyChart.data.datasets[0].data = baselineData;
+            analyticsEnergyChart.data.datasets[1].data = energyData;
+            analyticsEnergyChart.update();
+        }
+
+        // 3. Update Analytics Temp Chart
+        if (tempChart) {
+            tempChart.data.labels = labels;
+            tempChart.data.datasets[0].data = indoorData;
+            tempChart.data.datasets[1].data = outdoorData;
+            tempChart.update();
+        }
+        
+        // Update Overview Totals
+        document.getElementById('total-saved').innerText = `${totalSaved.toFixed(1)} kWh`;
+        document.getElementById('monthly-saved').innerText = `~${(totalSaved * 30).toFixed(0)} kWh`;
+        if (totalBaseline > 0) {
+            const percent = (totalSaved / totalBaseline) * 100;
+            document.getElementById('percent-saved').innerText = `${percent.toFixed(1)}%`;
+        }
+
+        // 4. Update Overview Horizontal Logs (Top 5 only)
+        const logContainer = document.getElementById('log-timeline');
+        if(logContainer) {
             logContainer.innerHTML = '';
-            
-            const labels = [];
-            const energyData = [];
-            const baselineData = [];
-            let totalSaved = 0;
-            let totalBaseline = 0;
-
-            const chartData = [...history].reverse();
-            
-            chartData.forEach(row => {
-                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-                labels.push(timeStr);
-                energyData.push(row.energy);
-                baselineData.push(row.baseline_energy || row.energy);
-                
-                totalSaved += (row.estimated_savings || 0);
-                totalBaseline += (row.baseline_energy || row.energy);
-            });
-
-            // Update Chart
-            if (energyChart) {
-                energyChart.data.labels = labels;
-                energyChart.data.datasets[0].data = baselineData;
-                energyChart.data.datasets[1].data = energyData;
-                energyChart.update();
-            }
-            
-            // Update Totals
-            document.getElementById('total-saved').innerText = `${totalSaved.toFixed(1)} kWh`;
-            document.getElementById('monthly-saved').innerText = `~${(totalSaved * 30).toFixed(0)} kWh`;
-            if (totalBaseline > 0) {
-                const percent = (totalSaved / totalBaseline) * 100;
-                document.getElementById('percent-saved').innerText = `${percent.toFixed(1)}%`;
-            }
-
-            // Horizontal Log Render (Take top 5 recent)
-            const recentLogs = history.slice(0, 5).reverse();
-            
+            const recentLogs = [...historyToUse].reverse().slice(0, 5);
             recentLogs.forEach((row, index) => {
                 const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                
                 let iconName = 'activity';
                 if (row.strategy.includes("Balanced")) iconName = 'scale';
                 if (row.strategy.includes("Comfort")) iconName = 'smile';
@@ -261,14 +328,61 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
                 logContainer.insertAdjacentHTML('beforeend', logItem);
             });
-            lucide.createIcons(); // Re-init icons for new HTML
-            
+        }
+
+        // 5. Update AI Decisions Screen Table
+        const aiTbody = document.getElementById('ai-decisions-tbody');
+        if(aiTbody) {
+            aiTbody.innerHTML = '';
+            [...historyToUse].reverse().forEach(row => {
+                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleString();
+                aiTbody.insertAdjacentHTML('beforeend', `
+                    <tr>
+                        <td>${timeStr}</td>
+                        <td style="font-weight:500; color:var(--primary);">${row.strategy}</td>
+                        <td>${row.action}</td>
+                        <td style="color:var(--success); font-weight: 500;">+${(row.estimated_savings || 0).toFixed(2)} kWh</td>
+                        <td><span style="display:inline-flex; align-items:center; gap:4px; color:var(--success); font-weight:500;"><i data-lucide="check-circle-2" size="14"></i> Applied</span></td>
+                    </tr>
+                `);
+            });
+        }
+
+        // 6. Update Operations Log Screen Viewer
+        const opsViewer = document.getElementById('ops-log-viewer');
+        if(opsViewer) {
+            opsViewer.innerHTML = '';
+            [...historyToUse].reverse().forEach(row => {
+                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toISOString().replace('T', ' ').substring(0, 19);
+                opsViewer.insertAdjacentHTML('beforeend', `
+                    <div class="log-line">
+                        <span class="log-time">[${timeStr}]</span>
+                        <span class="log-level level-info">INFO</span>
+                        <span class="log-msg">AI_CORE: Evaluating environmental state for optimization. Selected: ${row.strategy}.</span>
+                    </div>
+                    <div class="log-line">
+                        <span class="log-time">[${timeStr}]</span>
+                        <span class="log-level level-success">SUCCESS</span>
+                        <span class="log-msg">HVAC_CTRL: Executed: ${row.action}. Expected savings: ${(row.estimated_savings || 0).toFixed(2)} kWh.</span>
+                    </div>
+                `);
+            });
+        }
+
+        lucide.createIcons(); // Re-init icons for new HTML
+    }
+
+    // Network Fetch logic
+    async function fetchHistory() {
+        try {
+            const res = await fetch('/api/history');
+            currentHistoryData = await res.json();
+            renderHistoryData();
         } catch (error) {
             console.error("Error fetching history:", error);
         }
     }
 
-    // Polling
     setInterval(async () => {
         try {
             const res = await fetch('/api/status');
@@ -282,6 +396,69 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 2000);
     
-    // Initial fetch
     fetchHistory();
+
+    // REPORTS EXPORT LOGIC
+    document.getElementById('btn-download-csv')?.addEventListener('click', () => {
+        if(currentHistoryData.length === 0) return alert("No data available to export.");
+        
+        const headers = ["Timestamp", "Indoor_Temp", "Outdoor_Temp", "Energy_Usage", "Baseline_Energy", "AI_Strategy", "Control_Action", "Est_Savings"];
+        const rows = currentHistoryData.map(r => [
+            r.timestamp, r.indoor_temp, r.outdoor_temp, r.energy, r.baseline_energy, 
+            r.strategy, r.action, r.estimated_savings
+        ]);
+        
+        const csvContent = "data:text/csv;charset=utf-8," 
+            + headers.join(",") + "\n" 
+            + rows.map(e => e.join(",")).join("\n");
+            
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "ecoloop_operations_report.csv");
+        document.body.appendChild(link);
+        link.click();
+    });
+
+    document.getElementById('btn-download-pdf')?.addEventListener('click', () => {
+        if(currentHistoryData.length === 0) return alert("No data available to export.");
+        if(!window.jspdf) return alert("PDF generator library is still loading. Please try again in a moment.");
+        
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // Add Header
+        doc.setFontSize(22);
+        doc.setTextColor(22, 163, 74);
+        doc.text("EcoLoop AI", 14, 20);
+        
+        doc.setFontSize(14);
+        doc.setTextColor(31, 41, 55);
+        doc.text("Building Optimization Report", 14, 28);
+        
+        doc.setFontSize(10);
+        doc.setTextColor(107, 114, 128);
+        doc.text("Generated: " + new Date().toLocaleString(), 14, 34);
+        
+        // Generate Table
+        const head = [["Timestamp", "Strategy", "Action", "Energy Used", "Savings"]];
+        const body = currentHistoryData.map(r => [
+            r.timestamp,
+            r.strategy,
+            r.action,
+            r.energy.toFixed(1) + " kWh",
+            (r.estimated_savings || 0).toFixed(1) + " kWh"
+        ]);
+        
+        doc.autoTable({
+            startY: 40,
+            head: head,
+            body: body,
+            theme: 'striped',
+            headStyles: { fillColor: [22, 163, 74] },
+            styles: { fontSize: 9 }
+        });
+        
+        doc.save("ecoloop_operations_report.pdf");
+    });
 });

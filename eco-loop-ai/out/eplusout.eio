@@ -1,4 +1,4 @@
-Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.07.25 06:31
+Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.07.25 07:08
 ! <Version>, Version ID
  Version, 26.1
 ! <Timesteps per Hour>, #TimeSteps, Minutes per TimeStep {minutes}
@@ -114,14 +114,4 @@ Zone Volume Capacitance Multiplier,   1.000 ,   1.000,   1.000,   1.000
  DX Cooling Coil ASHRAE 127 Standard Ratings Information, Coil:Cooling:DX:SingleSpeed, MAIN COOLING COIL 1, Class 3, 143090.6, 39464.9, 141726.9, 31885.1, 141727.0, 24424.7, 141727.0, 13951.0
  DX Cooling Coil ASHRAE 127 Standard Ratings Information, Coil:Cooling:DX:SingleSpeed, MAIN COOLING COIL 1, Class 4, 149201.4, 40807.9, 141726.9, 31885.1, 141726.9, 24424.7, 141727.0, 13951.0
  Component Sizing Information, Fan:VariableVolume, EC PLUG FAN 1, User-Specified Maximum Flow Rate [m3/s], 8.50000
- Component Sizing Information, Fan:VariableVolume, EC PLUG FAN 1, Design Electric Power Consumption [W], 5901.42857
-! <Environment>,Environment Name,Environment Type, Start Date, End Date, Start DayOfWeek, Duration {#days}, Source:Start DayOfWeek,  Use Daylight Saving, Use Holidays, Apply Weekend Holiday Rule,  Use Rain Values, Use Snow Values, Sky Temperature Model
-! <Environment:Special Days>, Special Day Name, Special Day Type, Source, Start Date, Duration {#days}
-! <Environment:Daylight Saving>, Daylight Saving Indicator, Source, Start Date, End Date
-! <Environment:WarmupDays>, NumberofWarmupDays
-Environment,DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB,SizingPeriod:DesignDay,12/21,12/21,WinterDesignDay,1,N/A,N/A,N/A,N/A,N/A,N/A,Clark and Allen
-Environment:Daylight Saving,No,SizingPeriod:DesignDay
-! <Environment:Design Day Data>, Max Dry-Bulb Temp {C}, Temp Range {dC}, Temp Range Ind Type, Hum Ind Type, Hum Ind Value at Max Temp, Hum Ind Units, Pressure {Pa}, Wind Direction {deg CW from N}, Wind Speed {m/s}, Clearness, Rain, Snow
-! <Environment:Design Day Misc>,DayOfYear,ASHRAE A Coeff,ASHRAE B Coeff,ASHRAE C Coeff,Solar Constant-Annual Variation,Eq of Time {minutes}, Solar Declination Angle {deg}, Solar Model
-Environment:Design Day Data,-18.80,0.00,DefaultMultipliers,Wetbulb,-18.80,{C},101157,340,3.0,0.00,No,No
-Environment:Design Day Misc,355,1232.8,0.1424,5.7719E-002,1.0,2.45,-23.5,ASHRAEClearSky
+ Component Sizing Information, Fan:VariableVolume, EC PLUG FAN 1, Design Ele

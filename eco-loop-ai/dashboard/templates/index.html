@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 </head>
+
 <body>
-    
+
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="sidebar-header">
@@ -22,25 +27,32 @@
                 <p>Autonomous Building<br>Energy Optimization</p>
             </div>
         </div>
-        
+
         <nav class="nav-links">
-            <a href="#" class="nav-item active"><i data-lucide="home" size="18"></i> Overview</a>
-            <a href="#" class="nav-item"><i data-lucide="bar-chart-2" size="18"></i> Analytics</a>
-            <a href="#" class="nav-item"><i data-lucide="cpu" size="18"></i> AI Decisions</a>
-            <a href="#" class="nav-item"><i data-lucide="file-text" size="18"></i> Operations Log</a>
-            <a href="#" class="nav-item"><i data-lucide="pie-chart" size="18"></i> Reports</a>
+            <a href="#" class="nav-item active" data-target="screen-overview"><i data-lucide="home" size="18"></i>
+                Overview</a>
+            <a href="#" class="nav-item" data-target="screen-analytics"><i data-lucide="bar-chart-2" size="18"></i>
+                Analytics</a>
+            <a href="#" class="nav-item" data-target="screen-ai-decisions"><i data-lucide="cpu" size="18"></i> AI
+                Decisions</a>
+            <a href="#" class="nav-item" data-target="screen-operations-log"><i data-lucide="file-text" size="18"></i>
+                Operations Log</a>
+            <a href="#" class="nav-item" data-target="screen-reports"><i data-lucide="pie-chart" size="18"></i>
+                Reports</a>
         </nav>
 
         <div class="sidebar-footer">
             <h4>System Status</h4>
-            <div class="badge-auto"><div class="badge-dot"></div> System Autonomous</div>
+            <div class="badge-auto">
+                <div class="badge-dot"></div> System Autonomous
+            </div>
             <div class="sync-time" id="last-sync">Last Sync: --</div>
         </div>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
-        
+
         <!-- Topbar -->
         <header class="topbar">
             <div class="topbar-left">
@@ -58,28 +70,41 @@
 
         <!-- Setup Form (Moved Below Topbar) -->
         <div style="padding: 0 32px 16px;">
-            <form id="upload-form" class="upload-form" style="border: 1px solid var(--border); border-radius: var(--radius-lg); display: flex; align-items: center; gap: 16px; padding: 12px 24px; background: var(--bg-card);">
+            <form id="upload-form" class="upload-form"
+                style="border: 1px solid var(--border); border-radius: var(--radius-lg); display: flex; align-items: center; gap: 16px; padding: 12px 24px; background: var(--bg-card);">
                 <!-- Custom File Inputs -->
                 <div style="display: flex; align-items: center; gap: 8px;">
-                    <label for="epw-file" class="btn" style="background: var(--bg-main); color: var(--text-dark); border: 1px solid var(--border);">Choose EPW File</label>
-                    <input type="file" id="epw-file" accept=".epw" required style="display:none;" onchange="document.getElementById('epw-name').innerText = this.files[0].name">
-                    <span id="epw-name" style="font-size: 11px; color: var(--text-muted); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">No file chosen</span>
-                </div>
-                
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <label for="idf-file" class="btn" style="background: var(--bg-main); color: var(--text-dark); border: 1px solid var(--border);">Choose IDF File</label>
-                    <input type="file" id="idf-file" accept=".idf" required style="display:none;" onchange="document.getElementById('idf-name').innerText = this.files[0].name">
-                    <span id="idf-name" style="font-size: 11px; color: var(--text-muted); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">No file chosen</span>
+                    <label for="epw-file" class="btn"
+                        style="background: var(--bg-main); color: var(--text-dark); border: 1px solid var(--border);">Choose
+                        EPW File</label>
+                    <input type="file" id="epw-file" accept=".epw" required style="display:none;"
+                        onchange="document.getElementById('epw-name').innerText = this.files[0].name">
+                    <span id="epw-name"
+                        style="font-size: 11px; color: var(--text-muted); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">No
+                        file chosen</span>
                 </div>
 
-                <button type="submit" class="btn" style="background: var(--primary); color: white;">Start System</button>
-                <span id="upload-status" style="font-size: 12px; margin-left: auto; color: var(--warning); font-weight: 500;"></span>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="idf-file" class="btn"
+                        style="background: var(--bg-main); color: var(--text-dark); border: 1px solid var(--border);">Choose
+                        IDF File</label>
+                    <input type="file" id="idf-file" accept=".idf" required style="display:none;"
+                        onchange="document.getElementById('idf-name').innerText = this.files[0].name">
+                    <span id="idf-name"
+                        style="font-size: 11px; color: var(--text-muted); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">No
+                        file chosen</span>
+                </div>
+
+                <button type="submit" class="btn" style="background: var(--primary); color: white;">Start
+                    System</button>
+                <span id="upload-status"
+                    style="font-size: 12px; margin-left: auto; color: var(--warning); font-weight: 500;"></span>
             </form>
         </div>
 
         <!-- Dashboard Content -->
-        <div class="dashboard">
-            
+        <div id="screen-overview" class="screen active">
+
             <!-- Top Row: 6 Metrics -->
             <div class="metrics-row">
                 <div class="card metric-card">
@@ -221,9 +246,90 @@
             </div>
 
         </div>
+
+        <!-- ANALYTICS SCREEN -->
+        <div id="screen-analytics" class="screen">
+            <div class="card"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <h3 class="card-title" style="margin: 0;">Analytics Filters</h3>
+                <div style="display: flex; gap: 12px;">
+                    <select class="btn" style="background: var(--bg-main); border: 1px solid var(--border);"
+                        id="analytics-limit-filter">
+                        <option value="20">Last 20 Logs</option>
+                        <option value="10">Last 10 Logs</option>
+                        <option value="5">Last 5 Logs</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card">
+                <h3 class="card-title">Temperature Trends (Indoor vs Outdoor)</h3>
+                <div style="height: 300px;"><canvas id="tempChart"></canvas></div>
+            </div>
+            <div class="card" style="margin-top: 24px;">
+                <h3 class="card-title">Full Energy Analytics</h3>
+                <div style="height: 300px;"><canvas id="analyticsEnergyChart"></canvas></div>
+            </div>
+        </div>
+
+        <!-- AI DECISIONS SCREEN -->
+        <div id="screen-ai-decisions" class="screen">
+            <div class="card">
+                <h3 class="card-title">AI Decision History</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Strategy</th>
+                                <th>Control Action</th>
+                                <th>Est. Savings</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ai-decisions-tbody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPERATIONS LOG SCREEN -->
+        <div id="screen-operations-log" class="screen">
+            <div class="card console-card">
+                <h3 class="card-title">System Operations Log</h3>
+                <div class="console-viewer" id="ops-log-viewer">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- REPORTS SCREEN -->
+        <div id="screen-reports" class="screen">
+            <div class="card" style="text-align: center; padding: 48px;">
+                <i data-lucide="file-check-2" size="48" style="color: var(--primary); margin-bottom: 24px;"></i>
+                <h2 style="margin-bottom: 12px;">Generate System Report</h2>
+                <p style="color: var(--text-muted); margin-bottom: 32px;">Download a complete log of building
+                    performance and AI optimizations.</p>
+                <div style="display: flex; justify-content: center; gap: 16px;">
+                    <button id="btn-download-csv" class="btn"
+                        style="background: var(--bg-main); border: 1px solid var(--border); color: var(--text-dark); padding: 12px 24px; cursor: pointer; display: flex; align-items: center;"><i
+                            data-lucide="download" size="16" style="margin-right: 8px;"></i> Download CSV</button>
+                    <button id="btn-download-pdf" class="btn"
+                        style="background: var(--primary); color: white; padding: 12px 24px; cursor: pointer; display: flex; align-items: center; border: none;"><i
+                            data-lucide="file-text" size="16" style="margin-right: 8px;"></i> Download PDF</button>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer style="text-align: center; padding: 24px; color: var(--text-muted); font-size: 13px; margin-top: auto;">
+            Built By <a href="https://github.com/pritamrangari27" target="_blank"
+                style="color: var(--primary); text-decoration: none; font-weight: 500;">Pritam Rangari</a>
+        </footer>
     </main>
 
     <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
+
 </html>
