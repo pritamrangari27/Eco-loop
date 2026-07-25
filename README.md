@@ -13,11 +13,40 @@ By integrating the high-fidelity **EnergyPlus** simulation engine with an **Open
 - **Safety & Fallback Mechanisms:** A validation layer ensuring the LLM's decisions maintain thermal comfort and never breach hard safety constraints.
 
 ## 🏗️ System Architecture
-- **Simulator (`energyplus/simulator.py`)**: Wraps the EnergyPlus Python API (`pyenergyplus`) to pause, read state, and inject HVAC control overrides at every timestep.
-- **AI Agent (`agents/decision_agent.py`)**: The cognitive brain that receives environmental telemetry and outputs reasoning and control strategies.
-- **MCP Server (`mcp_server.py`)**: Provides tools to the LLM to inspect `.idf` structures and extract runtime `.err` logs securely.
-- **Controller & Validator (`controller/`, `safety/`)**: Validates the agent's actions against human comfort bounds (PMV) before actuating the simulation.
-- **Dashboard (`app.py`, `dashboard/`)**: A Flask-based web interface for live monitoring, metric logging, and exporting historical performance data.
+
+```mermaid
+graph TD
+    subgraph Simulation
+        EP[EnergyPlus Engine]
+        SIM[simulator.py Wrapper]
+        EP <-->|Timestep Callbacks| SIM
+    end
+
+    subgraph Intelligence
+        OLLAMA[Ollama: Qwen 2.5]
+        AGENT[decision_agent.py]
+        MCP[mcp_server.py]
+        AGENT <-->|Prompts & Tool Calls| OLLAMA
+        AGENT <-->|File Parsing / Logs| MCP
+    end
+
+    subgraph Control Loop
+        APP[app.py Main Loop]
+        VAL[safety/validator.py]
+        DB[(SQLite Database)]
+        DASH[Flask Dashboard UI]
+    end
+
+    SIM -->|Raw Telemetry| APP
+    APP -->|State Context| AGENT
+    AGENT -->|Proposed Strategy| VAL
+    VAL -->|Safe Actuation| SIM
+    VAL -->|Metrics & Decisions| DB
+    DB -->|History API| DASH
+```
+
+
+- 
 
 ## 🚀 Getting Started
 
