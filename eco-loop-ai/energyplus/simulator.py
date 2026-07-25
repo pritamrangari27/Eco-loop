@@ -4,6 +4,14 @@ import time
 import os
 import shutil
 
+import sys
+
+# Add EnergyPlus path to sys.path so Python can find pyenergyplus
+if sys.platform == 'win32':
+    ep_path = r'C:\EnergyPlusV26-1-0'
+    if ep_path not in sys.path:
+        sys.path.insert(0, ep_path)
+
 try:
     from pyenergyplus.api import EnergyPlusAPI
     HAS_EP = True
@@ -64,8 +72,8 @@ class RealEnergyPlusSimulator:
             
         t = threading.Thread(target=run_sim, daemon=True)
         t.start()
-        # Wait for the first step to complete
-        self.step_event.wait()
+        # Wait for the first step to complete (with timeout)
+        self.step_event.wait(timeout=10.0)
         self.step_event.clear()
 
     def step(self):
@@ -106,8 +114,8 @@ class RealEnergyPlusSimulator:
             
         # Allow simulation to proceed one step
         self.action_event.set()
-        # Wait for simulation to finish the step
-        self.step_event.wait()
+        # Wait for simulation to finish the step (prevent infinite hang if EP crashes)
+        self.step_event.wait(timeout=5.0)
         self.step_event.clear()
 
     def get_state(self):

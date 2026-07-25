@@ -101,16 +101,18 @@ def get_ai_decision(telemetry):
                 "stream": False
             }
             
-            # Using /api/chat instead of /api/generate for tool calling support
             chat_url = OLLAMA_API_URL.replace("/api/generate", "/api/chat")
+            print(f"[LLM] Attempt {attempt+1}/{max_retries} - Sending request to {chat_url}")
             response = requests.post(chat_url, json=payload, timeout=12)
             
             if response.status_code == 200:
                 result = response.json()
                 message = result.get("message", {})
+                print(f"[LLM] Received 200 OK. Response snippet: {str(message)[:200]}")
                 
                 # Check if the LLM called our tool
                 if "tool_calls" in message and len(message["tool_calls"]) > 0:
+                    print(f"[LLM] Tool calls found: {message['tool_calls']}")
                     tool_call = message["tool_calls"][0]
                     tool_name = tool_call["function"]["name"]
                     args = tool_call["function"]["arguments"]

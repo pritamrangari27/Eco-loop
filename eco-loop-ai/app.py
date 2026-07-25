@@ -18,49 +18,66 @@ simulation_ready = threading.Event()
 
 def autonomous_control_loop():
     global current_state
-    print("Waiting for simulation files to be uploaded...")
-    simulation_ready.wait()
-    print("Starting Autonomous Control Loop with real EnergyPlus data...")
     while True:
-        # 1. Simulator steps forward
-        simulator_instance.step()
-        
-        # 2. Get Telemetry
-        telemetry = get_telemetry()
-        
-        # 3. AI Agent Decision
-        ai_response = get_ai_decision(telemetry)
-        strategy = ai_response.get("strategy", "Balanced Mode")
-        reason = ai_response.get("reason", "No reason provided")
-        
-        # 4. Safety Validation
-        validation = validate_strategy(strategy, telemetry)
-        final_strategy = validation["final_strategy"]
-        action = validation["action"]
-        
-        # 5. Execute Action
-        execute_action(validation)
-        
-        # Estimate savings logic (mock)
-        savings = 0.0
-        if final_strategy == "Energy Saving":
-            savings = round((telemetry.get('energy') * 0.15), 2)
+        if not simulation_ready.is_set():
+            print("Waiting for simulation files to be uploaded...")
+            simulation_ready.wait()
+            print("Starting Autonomous Control Loop with real EnergyPlus data...")
+        try:
+            print("[LOOP] 1. Advancing simulator step...")
+            # 1. Simulator steps forward
+            simulator_instance.step()
             
-        # 6. Log to Database
-        log_decision(telemetry, final_strategy, reason, action, savings)
-        
-        # Update global state for UI
-        current_state = {
-            "telemetry": telemetry,
-            "ai": {
-                "strategy": final_strategy,
-                "reason": reason,
-                "action": action,
-                "savings": savings
+            print("[LOOP] 2. Fetching telemetry...")
+            # 2. Get Telemetry
+            telemetry = get_telemetry()
+            print(f"[LOOP] Telemetry fetched: {telemetry}")
+            
+            print("[LOOP] 3. Requesting AI decision...")
+            # 3. AI Agent Decision
+            ai_response = get_ai_decision(telemetry)
+            print(f"[LOOP] AI Response: {ai_response}")
+            strategy = ai_response.get("strategy", "Balanced Mode")
+            reason = ai_response.get("reason", "No reason provided")
+            
+            print(f"[LOOP] 4. Validating strategy: {strategy}")
+            # 4. Safety Validation
+            validation = validate_strategy(strategy, telemetry)
+            final_strategy = validation["final_strategy"]
+            action = validation["action"]
+            
+            print(f"[LOOP] 5. Executing action: {action}")
+            # 5. Execute Action
+            execute_action(validation)
+            
+            # Estimate savings logic (mock)
+            savings = 0.0
+            if final_strategy == "Energy Saving":
+                savings = round((telemetry.get('energy') * 0.15), 2)
+                
+            print(f"[LOOP] 6. Logging decision to DB...")
+            # 6. Log to Database
+            log_decision(telemetry, final_strategy, reason, action, savings)
+            print("[LOOP] Decision logged successfully.")
+            
+            # Update global state for UI
+            current_state = {
+                "telemetry": telemetry,
+                "ai": {
+                    "strategy": final_strategy,
+                    "reason": reason,
+                    "action": action,
+                    "savings": savings
+                }
             }
-        }
-        
-        time.sleep(LOOP_INTERVAL_SECONDS)
+            
+            print(f"[LOOP] Sleeping for {LOOP_INTERVAL_SECONDS} seconds...\n")
+            time.sleep(LOOP_INTERVAL_SECONDS)
+        except Exception as e:
+            print(f"[LOOP ERROR] Exception in control loop: {e}")
+            import traceback
+            traceback.print_exc()
+            time.sleep(5)
 
 @app.route('/')
 def index():
@@ -98,6 +115,8 @@ def upload_files():
 
 @app.route('/api/status')
 def status():
+    if not simulation_ready.is_set():
+        return jsonify({})
     return jsonify(current_state)
 
 @app.route('/api/history')

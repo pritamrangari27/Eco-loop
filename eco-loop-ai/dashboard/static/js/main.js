@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize Chart.js
     const ctx = document.getElementById('energyChart').getContext('2d');
     
-    // Vibrant multi-color gradient for the AI line
+    // Gradient for the chart
     let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(0, 229, 255, 0.4)'); /* Electric Cyan */
-    gradient.addColorStop(1, 'rgba(138, 43, 226, 0.0)'); /* Fade to Indigo/transparent */
+    gradient.addColorStop(0, 'rgba(56, 189, 248, 0.5)');
+    gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
 
     const chartConfig = {
         type: 'line',
@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     label: 'Baseline Energy (kWh)',
                     data: [],
-                    borderColor: '#ff4500', /* Neon Orange */
-                    backgroundColor: 'rgba(255, 69, 0, 0.1)',
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
                     borderWidth: 2,
                     fill: false,
                     tension: 0.4,
@@ -59,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     label: 'AI Optimized (kWh)',
                     data: [],
-                    borderColor: '#00e5ff', /* Electric Cyan */
+                    borderColor: '#38bdf8',
                     backgroundColor: gradient,
-                    borderWidth: 3,
+                    borderWidth: 2,
                     fill: true,
                     tension: 0.4,
                     pointRadius: 0
@@ -72,17 +72,16 @@ document.addEventListener("DOMContentLoaded", () => {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: true, labels: { color: '#000000', font: { family: 'Inter', weight: 600 } } },
-                tooltip: { backgroundColor: '#000000', titleColor: '#ffffff', bodyColor: '#ffffff' }
+                legend: { display: true, labels: { color: '#94a3b8' } }
             },
             scales: {
                 x: {
-                    grid: { color: '#e4e4e7', drawBorder: false },
-                    ticks: { color: '#52525b', font: { family: 'Roboto Mono' } }
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { color: '#94a3b8' }
                 },
                 y: {
-                    grid: { color: '#e4e4e7', drawBorder: false },
-                    ticks: { color: '#52525b', font: { family: 'Roboto Mono' } }
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { color: '#94a3b8' }
                 }
             },
             animation: {
@@ -101,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('indoor-temp').innerText = `${data.telemetry.indoor_temp}°C`;
         document.getElementById('outdoor-temp').innerText = `${data.telemetry.outdoor_temp}°C`;
         document.getElementById('energy').innerText = `${data.telemetry.energy} kWh`;
-        document.getElementById('carbon').innerText = `${data.telemetry.carbon_emissions || 0} kg`;
+        document.getElementById('carbon').innerText = `${data.telemetry.carbon_emissions || 0} kgCO2`;
         document.getElementById('occupancy').innerText = data.telemetry.occupancy;
         document.getElementById('pmv').innerText = data.telemetry.pmv;
         document.getElementById('iaq').innerText = data.telemetry.iaq_co2 || '--';
@@ -162,13 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
             history.forEach(row => {
                 const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
                 const logEntry = `
-                    <tr>
-                        <td class="time">${timeStr}</td>
-                        <td>${row.strategy}</td>
-                        <td>${row.action}</td>
-                        <td class="savings">+${row.estimated_savings || 0} kWh</td>
-                        <td>${row.reason}</td>
-                    </tr>
+                    <div class="log-entry" style="margin-bottom:10px; border-bottom:1px solid #334155; padding-bottom:5px;">
+                        <div class="log-time">${timeStr}</div>
+                        <strong>Strategy:</strong> ${row.strategy}<br>
+                        <strong>Action:</strong> ${row.action}<br>
+                        <strong>Savings:</strong> <span style="color: var(--success);">+${row.estimated_savings || 0} kWh</span><br>
+                        <em>${row.reason}</em>
+                    </div>
                 `;
                 logContainer.insertAdjacentHTML('beforeend', logEntry);
             });

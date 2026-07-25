@@ -1,0 +1,107 @@
+Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.07.25 05:56
+1,5,Environment Title[],Latitude[deg],Longitude[deg],Time Zone[],Elevation[m]
+2,8,Day of Simulation[],Month[],Day of Month[],DST Indicator[1=yes 0=no],Hour[],StartMinute[],EndMinute[],DayType
+3,5,Cumulative Day of Simulation[],Month[],Day of Month[],DST Indicator[1=yes 0=no],DayType  ! When Daily Report Variables Requested
+4,2,Cumulative Days of Simulation[],Month[]  ! When Monthly Report Variables Requested
+5,1,Cumulative Days of Simulation[] ! When Run Period Report Variables Requested
+6,1,Calendar Year of Simulation[] ! When Annual Report Variables Requested
+7,1,Environment,Site Outdoor Air Drybulb Temperature [C] !Hourly
+8,1,Environment,Site Outdoor Air Dewpoint Temperature [C] !Hourly
+9,1,Environment,Site Outdoor Air Wetbulb Temperature [C] !Hourly
+10,1,Environment,Site Outdoor Air Humidity Ratio [kgWater/kgDryAir] !Hourly
+11,1,Environment,Site Outdoor Air Relative Humidity [%] !Hourly
+12,1,DATA CENTER SERVERS,ITE CPU Electricity Rate [W] !Hourly
+13,1,DATA CENTER SERVERS,ITE Fan Electricity Rate [W] !Hourly
+14,1,DATA CENTER SERVERS,ITE UPS Electricity Rate [W] !Hourly
+15,1,DATA CENTER SERVERS,ITE CPU Electricity Rate at Design Inlet Conditions [W] !Hourly
+16,1,DATA CENTER SERVERS,ITE Fan Electricity Rate at Design Inlet Conditions [W] !Hourly
+17,1,DATA CENTER SERVERS,ITE UPS Heat Gain to Zone Rate [W] !Hourly
+18,1,DATA CENTER SERVERS,ITE Total Heat Gain to Zone Rate [W] !Hourly
+214,1,DATA CENTER SERVERS,ITE Standard Density Air Volume Flow Rate [m3/s] !Hourly
+215,1,DATA CENTER SERVERS,ITE Air Mass Flow Rate [kg/s] !Hourly
+216,1,DATA CENTER SERVERS,ITE Air Inlet Dry-Bulb Temperature [C] !Hourly
+217,1,DATA CENTER SERVERS,ITE Air Inlet Dewpoint Temperature [C] !Hourly
+218,1,DATA CENTER SERVERS,ITE Air Inlet Relative Humidity [%] !Hourly
+219,1,DATA CENTER SERVERS,ITE Air Outlet Dry-Bulb Temperature [C] !Hourly
+220,1,DATA CENTER SERVERS,ITE Supply Heat Index [] !Hourly
+221,1,DATA CENTER SERVERS,ITE Air Inlet Operating Range Exceeded Time [hr] !Hourly
+222,1,DATA CENTER SERVERS,ITE Air Inlet Dry-Bulb Temperature Above Operating Range Time [hr] !Hourly
+223,1,DATA CENTER SERVERS,ITE Air Inlet Dry-Bulb Temperature Below Operating Range Time [hr] !Hourly
+224,1,DATA CENTER SERVERS,ITE Air Inlet Dewpoint Temperature Above Operating Range Time [hr] !Hourly
+225,1,DATA CENTER SERVERS,ITE Air Inlet Dewpoint Temperature Below Operating Range Time [hr] !Hourly
+226,1,DATA CENTER SERVERS,ITE Air Inlet Relative Humidity Above Operating Range Time [hr] !Hourly
+227,1,DATA CENTER SERVERS,ITE Air Inlet Relative Humidity Below Operating Range Time [hr] !Hourly
+228,1,DATA CENTER SERVERS,ITE Air Inlet Dry-Bulb Temperature Difference Above Operating Range [deltaC] !Hourly
+229,1,DATA CENTER SERVERS,ITE Air Inlet Dry-Bulb Temperature Difference Below Operating Range [deltaC] !Hourly
+230,1,DATA CENTER SERVERS,ITE Air Inlet Dewpoint Temperature Difference Above Operating Range [deltaC] !Hourly
+231,1,DATA CENTER SERVERS,ITE Air Inlet Dewpoint Temperature Difference Below Operating Range [deltaC] !Hourly
+232,1,DATA CENTER SERVERS,ITE Air Inlet Relative Humidity Difference Above Operating Range [%] !Hourly
+233,1,DATA CENTER SERVERS,ITE Air Inlet Relative Humidity Difference Below Operating Range [%] !Hourly
+234,1,EMS,CRAC total system Power [W] !Hourly
+235,1,EMS,CRAC Net Sensible Capacity [W] !Hourly
+236,1,EMS,CRAC SCOP [] !Hourly
+237,1,EMS,PUE [] !Hourly
+238,1,MAIN ZONE,Zone Mean Air Temperature [C] !Hourly
+239,1,MAIN ZONE,Zone Air Heat Balance Internal Convective Heat Gain Rate [W] !Hourly
+240,1,MAIN ZONE,Zone Air Heat Balance Surface Convection Rate [W] !Hourly
+241,1,MAIN ZONE,Zone Air Heat Balance Interzone Air Transfer Rate [W] !Hourly
+242,1,MAIN ZONE,Zone Air Heat Balance Outdoor Air Transfer Rate [W] !Hourly
+243,1,MAIN ZONE,Zone Air Heat Balance System Air Transfer Rate [W] !Hourly
+244,1,MAIN ZONE,Zone Air Heat Balance System Convective Heat Gain Rate [W] !Hourly
+245,1,MAIN ZONE,Zone Air Heat Balance Air Energy Storage Rate [W] !Hourly
+246,1,MAIN ZONE,Zone Air Temperature [C] !Hourly
+381,1,MAIN ZONE,Zone Predicted Sensible Load to Cooling Setpoint Heat Transfer Rate [W] !Hourly
+444,1,MAIN ZONE BASEBOARD,Baseboard Electricity Rate [W] !Hourly
+445,1,EC PLUG FAN 1,Fan Electricity Rate [W] !Hourly
+446,1,EC PLUG FAN 1,Fan Rise in Air Temperature [deltaC] !Hourly
+472,1,DX COOLING COIL SYSTEM 1,Coil System Part Load Ratio [] !Hourly
+473,1,DX COOLING COIL SYSTEM 1,Coil System Frost Control Status [] !Hourly
+474,1,MAIN COOLING COIL 1,Cooling Coil Total Cooling Rate [W] !Hourly
+488,1,MAIN COOLING COIL 1,Cooling Coil Sensible Cooling Rate [W] !Hourly
+489,1,MAIN COOLING COIL 1,Cooling Coil Latent Cooling Rate [W] !Hourly
+490,1,MAIN COOLING COIL 1,Cooling Coil Electricity Rate [W] !Hourly
+516,1,MAIN COOLING COIL 1,Cooling Coil Runtime Fraction [] !Hourly
+664,1,Whole Building,Facility Total Building Electricity Demand Rate [W] !Hourly
+665,1,Whole Building,Facility Total HVAC Electricity Demand Rate [W] !Hourly
+666,1,Whole Building,Facility Total Electricity Demand Rate [W] !Hourly
+668,1,SYSTEM AVAILABILITY SCHEDULE,Schedule Value [] !Hourly
+669,1,ZONE CONTROL TYPE SCHED,Schedule Value [] !Hourly
+670,1,HEATING SETPOINT SCHEDULE,Schedule Value [] !Hourly
+671,1,SUPPLY AIR SETPOINT SCHEDULE,Schedule Value [] !Hourly
+672,1,COOLING RETURN AIR SETPOINT SCHEDULE,Schedule Value [] !Hourly
+673,1,DATA CENTER CPU LOADING SCHEDULE,Schedule Value [] !Hourly
+674,1,DATA CENTER OPERATION SCHEDULE,Schedule Value [] !Hourly
+675,1,LIEBERT ECONOPHASE QUADRATIC FIT,Performance Curve Input Variable 1 Value [] !Hourly
+676,1,LIEBERT ECONOPHASE QUADRATIC FIT,Performance Curve Input Variable 2 Value [] !Hourly
+677,1,LIEBERT ECONOPHASE QUADRATIC FIT,Performance Curve Output Value [] !Hourly
+678,1,DATA CENTER SERVERS POWER FLOADTEMP,Performance Curve Input Variable 1 Value [] !Hourly
+679,1,DATA CENTER SERVERS POWER FLOADTEMP,Performance Curve Input Variable 2 Value [] !Hourly
+680,1,DATA CENTER SERVERS POWER FLOADTEMP,Performance Curve Output Value [] !Hourly
+681,1,DATA CENTER SERVERS AIRFLOW FLOADTEMP,Performance Curve Input Variable 1 Value [] !Hourly
+682,1,DATA CENTER SERVERS AIRFLOW FLOADTEMP,Performance Curve Input Variable 2 Value [] !Hourly
+683,1,DATA CENTER SERVERS AIRFLOW FLOADTEMP,Performance Curve Output Value [] !Hourly
+684,1,DATA CENTER RECIRCULATION FLOADTEMP,Performance Curve Input Variable 1 Value [] !Hourly
+685,1,DATA CENTER RECIRCULATION FLOADTEMP,Performance Curve Input Variable 2 Value [] !Hourly
+686,1,DATA CENTER RECIRCULATION FLOADTEMP,Performance Curve Output Value [] !Hourly
+687,1,HPACCOOLCAPFFF,Performance Curve Input Variable 1 Value [] !Hourly
+688,1,HPACCOOLCAPFFF,Performance Curve Output Value [] !Hourly
+689,1,HPACCOOLEIRFFF,Performance Curve Input Variable 1 Value [] !Hourly
+690,1,HPACCOOLEIRFFF,Performance Curve Output Value [] !Hourly
+691,1,HPACCOOLPLFFPLR,Performance Curve Input Variable 1 Value [] !Hourly
+692,1,HPACCOOLPLFFPLR,Performance Curve Output Value [] !Hourly
+693,1,ECM FANPOWER FFLOW,Performance Curve Input Variable 1 Value [] !Hourly
+694,1,ECM FANPOWER FFLOW,Performance Curve Output Value [] !Hourly
+695,1,UPS EFFICIENCY FPLR,Performance Curve Input Variable 1 Value [] !Hourly
+696,1,UPS EFFICIENCY FPLR,Performance Curve Output Value [] !Hourly
+697,1,COOL CAP MOD FUNC OF TEMPERATURE,Performance Curve Input Variable 1 Value [] !Hourly
+698,1,COOL CAP MOD FUNC OF TEMPERATURE,Performance Curve Input Variable 2 Value [] !Hourly
+699,1,COOL CAP MOD FUNC OF TEMPERATURE,Performance Curve Output Value [] !Hourly
+700,1,LIEBERT ECONOPHASE EIR FUNC T,Performance Curve Input Variable 1 Value [] !Hourly
+701,1,LIEBERT ECONOPHASE EIR FUNC T,Performance Curve Input Variable 2 Value [] !Hourly
+702,1,LIEBERT ECONOPHASE EIR FUNC T,Performance Curve Output Value [] !Hourly
+703,1,SUPPLY INLET NODE,System Node Temperature [C] !Hourly
+704,1,SUPPLY INLET NODE,System Node Mass Flow Rate [kg/s] !Hourly
+705,1,SUPPLY INLET NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+706,1,SUPPLY INLET NODE,System Node Setpoint Temperature [C] !Hourly
+707,1,SUPPLY INLET NODE,System Node Relative Humidity [%] !Hourly
+708,1
