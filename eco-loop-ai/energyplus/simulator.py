@@ -60,6 +60,8 @@ class RealEnergyPlusSimulator:
             # For robustness without knowing exact IDF zones, we apply a lightweight approximation matching the real API flow
             self.indoor_temp += random.uniform(-0.1, 0.1)
             
+            self.update_physics()
+            
             # Pause simulation so control loop can run
             self.step_event.set()
             self.action_event.wait()
@@ -75,6 +77,27 @@ class RealEnergyPlusSimulator:
         # Wait for the first step to complete (with timeout)
         self.step_event.wait(timeout=10.0)
         self.step_event.clear()
+
+    def update_physics(self):
+        # HVAC provides cooling if the room is hotter than the setpoint
+        cooling_effect = (self.indoor_temp - self.cooling_setpoint) * 0.8 if self.indoor_temp > self.cooling_setpoint else 0.0
+        self.indoor_temp += (self.outdoor_temp - self.indoor_temp) * 0.1 - cooling_effect + (self.occupancy * 0.05)
+        self.pmv = (self.indoor_temp - 24.0) * 0.5
+        
+        # Baseline energy if we did not have AI optimization (fixed setpoint at 22C)
+        baseline_cooling_effect = (self.indoor_temp - 22.0) * 0.8 if self.indoor_temp > 22.0 else 0.0
+        self.baseline_energy = 20 + (baseline_cooling_effect * 50) + (self.occupancy * 0.5) + random.uniform(-1, 1)
+
+        self.energy = 20 + (cooling_effect * 50) + (self.occupancy * 0.5)
+        self.energy += random.uniform(-2, 2)
+        self.carbon_emissions = self.energy * 0.45  # Assuming 0.45 kgCO2/kWh grid intensity
+        
+        # Simulated IAQ (CO2 rises with occupancy, falls with HVAC ventilation)
+        ventilation_rate = 1.0 if self.hvac_status == "ON" else 0.2
+        self.iaq_co2 += (self.occupancy * 15) - (self.iaq_co2 - 400) * ventilation_rate * 0.1
+        self.iaq_co2 = max(400.0, self.iaq_co2)
+
+        self.hvac_status = "ON" if self.energy > 30 else "IDLE"
 
     def step(self):
         if not HAS_EP:
@@ -92,24 +115,7 @@ class RealEnergyPlusSimulator:
             except Exception as e:
                 pass # Handled internally if EP is mocking
 
-            cooling_effect = (24.0 - self.cooling_setpoint) * 0.2 if self.cooling_setpoint < 24.0 else 0
-            self.indoor_temp += (self.outdoor_temp - self.indoor_temp) * 0.1 - cooling_effect + (self.occupancy * 0.05)
-            self.pmv = (self.indoor_temp - 24.0) * 0.5
-            
-            # Baseline energy if we did not have AI optimization (fixed setpoint at 22C)
-            baseline_cooling_effect = (24.0 - 22.0) * 0.2
-            self.baseline_energy = 20 + (baseline_cooling_effect * 50) + (self.occupancy * 0.5) + random.uniform(-1, 1)
-
-            self.energy = 20 + (cooling_effect * 50) + (self.occupancy * 0.5)
-            self.energy += random.uniform(-2, 2)
-            self.carbon_emissions = self.energy * 0.45  # Assuming 0.45 kgCO2/kWh grid intensity
-            
-            # Simulated IAQ (CO2 rises with occupancy, falls with HVAC ventilation)
-            ventilation_rate = 1.0 if self.hvac_status == "ON" else 0.2
-            self.iaq_co2 += (self.occupancy * 15) - (self.iaq_co2 - 400) * ventilation_rate * 0.1
-            self.iaq_co2 = max(400.0, self.iaq_co2)
-
-            self.hvac_status = "ON" if self.energy > 30 else "IDLE"
+            self.update_physics()
             return
             
         # Allow simulation to proceed one step

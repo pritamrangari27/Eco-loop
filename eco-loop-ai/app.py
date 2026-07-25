@@ -50,9 +50,9 @@ def autonomous_control_loop():
             execute_action(validation)
             
             # Estimate savings logic (mock)
-            savings = 0.0
-            if final_strategy == "Energy Saving":
-                savings = round((telemetry.get('energy') * 0.15), 2)
+            baseline_energy = telemetry.get('baseline_energy', 0.0)
+            energy = telemetry.get('energy', 0.0)
+            savings = max(0.0, round(baseline_energy - energy, 2))
                 
             print(f"[LOOP] 6. Logging decision to DB...")
             # 6. Log to Database

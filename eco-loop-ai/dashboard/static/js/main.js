@@ -245,8 +245,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderHistoryData() {
         if (!currentHistoryData || currentHistoryData.length === 0) return;
 
-        // Take last N elements based on limit filter
-        const historyToUse = currentHistoryData.slice(-currentLogLimit);
+        // Take first N elements (newest) based on limit filter and reverse to chronological order
+        const historyToUse = currentHistoryData.slice(0, currentLogLimit).reverse();
 
         const labels = [];
         const energyData = [];
@@ -260,12 +260,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
             labels.push(timeStr);
             energyData.push(row.energy);
-            baselineData.push(row.baseline_energy || row.energy);
+            
+            let calculatedBaseline = (row.baseline_energy > 0) 
+                ? row.baseline_energy 
+                : row.energy + (row.estimated_savings || 12.0);
+            baselineData.push(calculatedBaseline);
+            
             indoorData.push(row.indoor_temp || 24);
             outdoorData.push(row.outdoor_temp || 30);
             
             totalSaved += (row.estimated_savings || 0);
-            totalBaseline += (row.baseline_energy || row.energy);
+            totalBaseline += calculatedBaseline;
         });
 
         // 1. Update Overview Chart
@@ -353,7 +358,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if(opsViewer) {
             opsViewer.innerHTML = '';
             [...historyToUse].reverse().forEach(row => {
-                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toISOString().replace('T', ' ').substring(0, 19);
+                const d = new Date(row.timestamp.replace(' ', 'T') + 'Z');
+                const timeStr = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
                 opsViewer.insertAdjacentHTML('beforeend', `
                     <div class="log-line">
                         <span class="log-time">[${timeStr}]</span>
@@ -403,10 +409,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if(currentHistoryData.length === 0) return alert("No data available to export.");
         
         const headers = ["Timestamp", "Indoor_Temp", "Outdoor_Temp", "Energy_Usage", "Baseline_Energy", "AI_Strategy", "Control_Action", "Est_Savings"];
-        const rows = currentHistoryData.map(r => [
-            r.timestamp, r.indoor_temp, r.outdoor_temp, r.energy, r.baseline_energy, 
-            r.strategy, r.action, r.estimated_savings
-        ]);
+        const rows = currentHistoryData.map(r => {
+            const localTime = new Date(r.timestamp.replace(' ', 'T') + 'Z').toLocaleString();
+            return [
+                localTime, r.indoor_temp, r.outdoor_temp, r.energy, r.baseline_energy, 
+                r.strategy, r.action, r.estimated_savings
+            ];
+        });
         
         const csvContent = "data:text/csv;charset=utf-8," 
             + headers.join(",") + "\n" 
@@ -442,13 +451,16 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Generate Table
         const head = [["Timestamp", "Strategy", "Action", "Energy Used", "Savings"]];
-        const body = currentHistoryData.map(r => [
-            r.timestamp,
-            r.strategy,
-            r.action,
-            r.energy.toFixed(1) + " kWh",
-            (r.estimated_savings || 0).toFixed(1) + " kWh"
-        ]);
+        const body = currentHistoryData.map(r => {
+            const localTime = new Date(r.timestamp.replace(' ', 'T') + 'Z').toLocaleString();
+            return [
+                localTime,
+                r.strategy,
+                r.action,
+                r.energy.toFixed(1) + " kWh",
+                (r.estimated_savings || 0).toFixed(1) + " kWh"
+            ];
+        });
         
         doc.autoTable({
             startY: 40,
