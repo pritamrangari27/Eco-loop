@@ -3,119 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoLoop AI - Building Optimization</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>EcoLoop AI - Autonomous Building Energy Optimization</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <div class="dashboard-container">
-        <header class="header glass-panel">
-            <h1>EcoLoop AI</h1>
-            <div class="status-badge">
-                <span class="dot pulse"></span>
-                System Autonomous
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i data-lucide="leaf" size="32"></i>
+            <div class="sidebar-header-text">
+                <h1>EcoLoop AI</h1>
+                <p>Autonomous Building<br>Energy Optimization</p>
+            </div>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="#" class="nav-item active"><i data-lucide="home" size="18"></i> Overview</a>
+            <a href="#" class="nav-item"><i data-lucide="bar-chart-2" size="18"></i> Analytics</a>
+            <a href="#" class="nav-item"><i data-lucide="cpu" size="18"></i> AI Decisions</a>
+            <a href="#" class="nav-item"><i data-lucide="file-text" size="18"></i> Operations Log</a>
+            <a href="#" class="nav-item"><i data-lucide="pie-chart" size="18"></i> Reports</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <h4>System Status</h4>
+            <div class="badge-auto"><div class="badge-dot"></div> System Autonomous</div>
+            <div class="sync-time" id="last-sync">Last Sync: --</div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="topbar-left">
+            </div>
+            <div class="topbar-right">
+                <div class="time-block">
+                    <div>
+                        <h3 id="clock-time">00:00 AM</h3>
+                        <p id="clock-date">-- --- ----</p>
+                    </div>
+                    <i data-lucide="sun" size="24" style="color: var(--warning);"></i>
+                </div>
             </div>
         </header>
 
-        <main class="grid-container">
-            <!-- Setup Panel -->
-            <section class="setup-panel glass-panel" style="grid-column: 1 / -1;">
-                <h2>Simulation Setup</h2>
-                <form id="upload-form" style="display: flex; gap: 1rem; align-items: center;">
-                    <div>
-                        <label for="epw-file" class="label">Weather File (.epw):</label>
-                        <input type="file" id="epw-file" accept=".epw" required style="display: block; margin-top: 0.5rem; color: var(--text-primary);">
-                    </div>
-                    <div>
-                        <label for="idf-file" class="label">Building Model (.idf):</label>
-                        <input type="file" id="idf-file" accept=".idf" required style="display: block; margin-top: 0.5rem; color: var(--text-primary);">
-                    </div>
-                    <button type="submit" style="margin-top: 1.5rem; padding: 0.5rem 1rem; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Initialize Simulation</button>
-                </form>
-                <p id="upload-status" style="margin-top: 1rem; font-size: 0.875rem; color: var(--warning);"></p>
-            </section>
+        <!-- Setup Form (Moved Below Topbar) -->
+        <div style="padding: 0 32px 16px;">
+            <form id="upload-form" class="upload-form" style="border: 1px solid var(--border); border-radius: var(--radius-lg); display: flex; align-items: center; gap: 16px; padding: 12px 24px; background: var(--bg-card);">
+                <!-- Custom File Inputs -->
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="epw-file" class="btn" style="background: var(--bg-main); color: var(--text-dark); border: 1px solid var(--border);">Choose EPW File</label>
+                    <input type="file" id="epw-file" accept=".epw" required style="display:none;" onchange="document.getElementById('epw-name').innerText = this.files[0].name">
+                    <span id="epw-name" style="font-size: 11px; color: var(--text-muted); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">No file chosen</span>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="idf-file" class="btn" style="background: var(--bg-main); color: var(--text-dark); border: 1px solid var(--border);">Choose IDF File</label>
+                    <input type="file" id="idf-file" accept=".idf" required style="display:none;" onchange="document.getElementById('idf-name').innerText = this.files[0].name">
+                    <span id="idf-name" style="font-size: 11px; color: var(--text-muted); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">No file chosen</span>
+                </div>
 
-            <!-- Telemetry Panel -->
-            <section class="telemetry-panel glass-panel">
-                <h2>Building Status</h2>
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <span class="label">Indoor Temp</span>
-                        <span class="value" id="indoor-temp">--°C</span>
+                <button type="submit" class="btn" style="background: var(--primary); color: white;">Start System</button>
+                <span id="upload-status" style="font-size: 12px; margin-left: auto; color: var(--warning); font-weight: 500;"></span>
+            </form>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard">
+            
+            <!-- Top Row: 6 Metrics -->
+            <div class="metrics-row">
+                <div class="card metric-card">
+                    <div class="metric-header"><i data-lucide="thermometer"></i> Indoor Temp</div>
+                    <div class="metric-value" id="indoor-temp">--°C</div>
+                    <div class="metric-status text-green" id="indoor-status">--</div>
+                </div>
+                <div class="card metric-card">
+                    <div class="metric-header"><i data-lucide="sun"></i> Outdoor Temp</div>
+                    <div class="metric-value" id="outdoor-temp">--°C</div>
+                    <div class="metric-status text-orange">Sunny</div>
+                </div>
+                <div class="card metric-card">
+                    <div class="metric-header"><i data-lucide="zap"></i> Energy Usage</div>
+                    <div class="metric-value" id="energy">-- kWh</div>
+                    <div class="metric-status text-gray">Today</div>
+                </div>
+                <div class="card metric-card">
+                    <div class="metric-header"><i data-lucide="users"></i> Occupancy</div>
+                    <div class="metric-value" id="occupancy">--</div>
+                    <div class="metric-status text-green">Moderate</div>
+                </div>
+                <div class="card metric-card">
+                    <div class="metric-header"><i data-lucide="smile"></i> PMV Comfort</div>
+                    <div class="metric-value" id="pmv">--</div>
+                    <div class="metric-status text-green" id="pmv-status">--</div>
+                </div>
+                <div class="card metric-card">
+                    <div class="metric-header"><i data-lucide="wind"></i> HVAC Status</div>
+                    <div class="metric-value" id="hvac-status">--</div>
+                    <div class="metric-status text-gray">System Idle</div>
+                </div>
+            </div>
+
+            <!-- Middle Row -->
+            <div class="middle-row">
+                <div class="card chart-card">
+                    <div class="chart-left">
+                        <h3 class="card-title">Energy Comparison (Today)</h3>
+                        <div style="height: 220px;"><canvas id="energyChart"></canvas></div>
                     </div>
-                    <div class="metric-card">
-                        <span class="label">Outdoor Temp</span>
-                        <span class="value" id="outdoor-temp">--°C</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="label">Energy Usage</span>
-                        <span class="value" id="energy">-- kWh</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="label">Occupancy</span>
-                        <span class="value" id="occupancy">--</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="label">Carbon (kgCO2)</span>
-                        <span class="value" id="carbon">--</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="label">Comfort (PMV)</span>
-                        <span class="value" id="pmv">--</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="label">IAQ (CO2 ppm)</span>
-                        <span class="value" id="iaq">--</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="label">HVAC Status</span>
-                        <span class="value" id="hvac-status">--</span>
+                    <div class="chart-right savings-block">
+                        <div>
+                            <h4>Total Savings</h4>
+                            <div class="big-percent" id="percent-saved">0%</div>
+                        </div>
+                        <div>
+                            <div class="val" id="total-saved">0 kWh</div>
+                            <div class="sub">Saved Today</div>
+                        </div>
+                        <div>
+                            <h4>Est. Savings (Monthly)</h4>
+                            <div class="val" id="monthly-saved">~0 kWh</div>
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- AI Decision Panel -->
-            <section class="ai-panel glass-panel glow">
-                <h2>AI Decision Engine</h2>
-                <div class="ai-details">
-                    <div class="ai-item">
-                        <span class="label">Current Strategy</span>
-                        <h3 id="ai-strategy" class="highlight">Analyzing...</h3>
+                <div class="card strategy-card">
+                    <h3 class="card-title">Current AI Strategy</h3>
+                    <div class="strategy-header">
+                        <div class="strategy-icon"><i data-lucide="scale" size="24"></i></div>
+                        <div class="strategy-title" id="ai-strategy">--</div>
                     </div>
-                    <div class="ai-item">
-                        <span class="label">Reasoning</span>
-                        <p id="ai-reason">Waiting for telemetry...</p>
-                    </div>
-                    <div class="ai-item">
-                        <span class="label">Control Action</span>
-                        <p id="ai-action">--</p>
-                    </div>
-                    <div class="ai-item">
-                        <span class="label">Est. Savings</span>
-                        <p id="ai-savings" class="success">0.0 kWh</p>
+                    <div class="strategy-info">
+                        <div class="strategy-info-block">
+                            <h4>Reasoning</h4>
+                            <p id="ai-reason">--</p>
+                        </div>
+                        <div class="strategy-info-block">
+                            <h4>Control Action</h4>
+                            <p id="ai-action">--</p>
+                        </div>
+                        <div class="strategy-info-block">
+                            <h4>Est. Savings</h4>
+                            <p id="ai-savings" class="text-green">+0 kWh saved</p>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Charts Panel -->
-            <section class="charts-panel glass-panel">
-                <h2>Energy Analytics</h2>
-                <div class="chart-container">
-                    <canvas id="energyChart"></canvas>
+            <!-- Bottom Row -->
+            <div class="bottom-row">
+                <div class="card" style="padding: 0;">
+                    <div style="padding: 20px 20px 0;">
+                        <h3 class="card-title">Environmental Overview</h3>
+                    </div>
+                    <div class="env-grid">
+                        <div class="env-item" style="padding-bottom: 20px;">
+                            <i data-lucide="droplet" size="18"></i>
+                            <div class="label">Humidity</div>
+                            <div class="val" id="humidity">--</div>
+                            <div class="status text-green">Normal</div>
+                        </div>
+                        <div class="env-item" style="padding-bottom: 20px;">
+                            <i data-lucide="cloud" size="18"></i>
+                            <div class="label">CO2 (Indoor)</div>
+                            <div class="val" id="iaq">--</div>
+                            <div class="status text-green">Good</div>
+                        </div>
+                        <div class="env-item" style="padding-bottom: 20px;">
+                            <i data-lucide="activity" size="18"></i>
+                            <div class="label">IAQ</div>
+                            <div class="val">Good</div>
+                            <div class="status text-green">Healthy</div>
+                        </div>
+                        <div class="env-item" style="padding-bottom: 20px;">
+                            <i data-lucide="fan" size="18"></i>
+                            <div class="label">Ventilation</div>
+                            <div class="val">Low</div>
+                            <div class="status text-green">Optimized</div>
+                        </div>
+                        <div class="env-item" style="padding-bottom: 20px;">
+                            <i data-lucide="leaf" size="18"></i>
+                            <div class="label">Carbon Emission</div>
+                            <div class="val" id="carbon">--</div>
+                            <div class="status text-green">Low Impact</div>
+                        </div>
+                    </div>
                 </div>
-            </section>
 
-            <!-- Operations Log Panel -->
-            <section class="log-panel glass-panel">
-                <h2>AI Decision Log</h2>
-                <div id="decision-log"></div>
-                <div class="total-savings">
-                    Est. Savings: <span id="total-saved">0</span> kWh (<span id="percent-saved">0</span>%)
+                <div class="card">
+                    <h3 class="card-title">PMV Comfort Gauge</h3>
+                    <div class="gauge-container">
+                        <canvas id="gaugeChart"></canvas>
+                        <div class="gauge-value">
+                            <h3 id="gauge-val">0.0</h3>
+                            <p id="gauge-status">Comfortable</p>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+
+            <!-- Operations Log -->
+            <div class="card">
+                <h3 class="card-title">Recent Operations Log (Latest)</h3>
+                <div class="log-timeline" id="log-timeline">
+                    <!-- Javascript will inject 4-5 items here -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

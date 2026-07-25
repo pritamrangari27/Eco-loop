@@ -1,0 +1,18 @@
+Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.07.25 06:31,
+   ** Warning ** Weather file location will be used rather than entered (IDF) Location object.
+   **   ~~~   ** ..Location object=DENVER CENTENNIAL CO USA WMO=724666
+   **   ~~~   ** ..Weather File Location=Mumbai-Andheri RS MH IND ISHRAE2014 WMO#=430030
+   **   ~~~   ** ..due to location differences, Latitude difference=[20.62] degrees, Longitude difference=[178.03] degrees.
+   **   ~~~   ** ..Time Zone difference=[12.5] hour(s), Elevation difference=[99.22] percent, [1779.00] meters.
+   ** Warning ** SetUpDesignDay: Entered DesignDay Barometric Pressure=81560 differs by more than 10% from Standard Barometric Pressure=101157.
+   **   ~~~   ** ...occurs in DesignDay=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, Standard Pressure (based on elevation) will be used.
+   ** Warning ** SetUpDesignDay: Entered DesignDay Barometric Pressure=81560 differs by more than 10% from Standard Barometric Pressure=101157.
+   **   ~~~   ** ...occurs in DesignDay=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, Standard Pressure (based on elevation) will be used.
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation

@@ -1,0 +1,675 @@
+****  Begin EMS Language Processor Error and Trace Output  *** 
+<Erl program name, line #, line text, result, occurrence timing information ... >
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,776.782162, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,776.782162, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,27099.653501, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6197.947871, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,4.372359, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,27099.653501, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6197.947871, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:00 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,72574.740755, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6634.766348, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,10.938552, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,72574.740755, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6634.766348, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 23:50 - 24:00
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,776.782162, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,776.782162, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,44550.316318, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,9556.978780, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,4.661548, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,44550.316318, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,9556.978780, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 00:00 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,40669.499966, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,11938.885156, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,3.406473, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,40669.499966, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,11938.885156, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN CLG 1% CONDNS DB=>MWB, 07/21 23:50 - 24:00
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,776.782162, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,776.782162, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,149519.507099, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,28380.440264, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,5.268399, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,149519.507099, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,28380.440264, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=JAN, 01/01 00:00 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,138832.291013, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,26285.305257, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,5.281745, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,138832.291013, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,26285.305257, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=JAN, 01/01 23:50 - 24:00
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,776.782162, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,776.782162, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,81562.489238, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,29366.536050, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,2.777395, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,81562.489238, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,29366.536050, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=JUL, 07/01 00:00 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1004.858589, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,0.0, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,49079.702040, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,20069.664508, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,2.445466, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,49079.702040, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,20069.664508, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,0.0, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCPUE,Line 3,ELSE,1.000000, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCPUE,Line 4,SET PUE = 0.0,0.0, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=JUL, 07/01 23:50 - 24:00
+! <EnergyManagementSystem:Actuator Available>, Component Unique Name, Component Type,  Control Type, Units
+EnergyManagementSystem:Actuator Available,SYSTEM AVAILABILITY SCHEDULE,Schedule:Compact,Schedule Value,[ ]
+EnergyManagementSystem:Actuator Available,ZONE CONTROL TYPE SCHED,Schedule:Compact,Schedule Value,[ ]
+EnergyManagementSystem:Actuator Available,HEATING SETPOINT SCHEDULE,Schedule:Compact,Schedule Value,[ ]
+EnergyManagementSystem:Actuator Available,SUPPLY AIR SETPOINT SCHEDULE,Schedule:Compact,Schedule Value,[ ]
+EnergyManagementSystem:Actuator Available,COOLING RETURN AIR SETPOINT SCHEDULE,Schedule:Compact,Schedule Value,[ ]
+EnergyManagementSystem:Actuator Available,DATA CENTER CPU LOADING SCHEDULE,Schedule:Compact,Schedule Value,[ ]
+EnergyManagementSystem:Actuator Available,DATA CENTER OPERATION SCHEDULE,Schedule:Constant,Schedule Value,[ ]
+EnergyManagementSystem:Actuator Available,Environment,Weather Data,Outdoor Dry Bulb,[C]
+EnergyManagementSystem:Actuator Available,Environment,Weather Data,Outdoor Dew Point,[C]
+EnergyManagementSystem:Actuator Available,Environment,Weather Data,Outdoor Relative Humidity,[%]
+EnergyManagementSystem:Actuator Available,Environment,Weather Data,Diffuse Solar,[W/m2]
+EnergyManagementSystem:Actuator Available,Environment,Weather Data,Direct Solar,[W/m2]
+EnergyManagementSystem:Actuator Available,Environment,Weather Data,Wind Speed,[m/s]
+EnergyManagementSystem:Actuator Available,Environment,Weather Data,Wind Direction,[deg]
+EnergyManagementSystem:Actuator Available,C5 - 4 IN HW CONCRETE,Material,Surface Property Solar Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,C5 - 4 IN HW CONCRETE,Material,Surface Property Thermal Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,C5 - 4 IN HW CONCRETE,Material,Surface Property Visible Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,R13LAYER,Material,Surface Property Solar Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,R13LAYER,Material,Surface Property Thermal Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,R13LAYER,Material,Surface Property Visible Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,R31LAYER,Material,Surface Property Solar Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,R31LAYER,Material,Surface Property Thermal Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,R31LAYER,Material,Surface Property Visible Absorptance,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL001,Surface,Interior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:WALL001,Surface,Exterior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:WALL002,Surface,Interior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:WALL002,Surface,Exterior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:WALL003,Surface,Interior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:WALL003,Surface,Exterior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:WALL004,Surface,Interior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:WALL004,Surface,Exterior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:FLR001,Surface,Interior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:FLR001,Surface,Exterior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:ROOF001,Surface,Interior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:ROOF001,Surface,Exterior Surface Convection Heat Transfer Coefficient,[W/m2-K]
+EnergyManagementSystem:Actuator Available,ZN001:WALL001,Surface,Construction State,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL002,Surface,Construction State,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL003,Surface,Construction State,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL004,Surface,Construction State,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:FLR001,Surface,Construction State,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:ROOF001,Surface,Construction State,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL001,Surface,View Factor To Ground,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL001,Surface,Outdoor Air Drybulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:WALL001,Surface,Outdoor Air Wetbulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:WALL001,Surface,Outdoor Air Wind Speed,[m/s]
+EnergyManagementSystem:Actuator Available,ZN001:WALL001,Surface,Outdoor Air Wind Direction,[degree]
+EnergyManagementSystem:Actuator Available,ZN001:WALL002,Surface,View Factor To Ground,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL002,Surface,Outdoor Air Drybulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:WALL002,Surface,Outdoor Air Wetbulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:WALL002,Surface,Outdoor Air Wind Speed,[m/s]
+EnergyManagementSystem:Actuator Available,ZN001:WALL002,Surface,Outdoor Air Wind Direction,[degree]
+EnergyManagementSystem:Actuator Available,ZN001:WALL003,Surface,View Factor To Ground,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL003,Surface,Outdoor Air Drybulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:WALL003,Surface,Outdoor Air Wetbulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:WALL003,Surface,Outdoor Air Wind Speed,[m/s]
+EnergyManagementSystem:Actuator Available,ZN001:WALL003,Surface,Outdoor Air Wind Direction,[degree]
+EnergyManagementSystem:Actuator Available,ZN001:WALL004,Surface,View Factor To Ground,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:WALL004,Surface,Outdoor Air Drybulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:WALL004,Surface,Outdoor Air Wetbulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:WALL004,Surface,Outdoor Air Wind Speed,[m/s]
+EnergyManagementSystem:Actuator Available,ZN001:WALL004,Surface,Outdoor Air Wind Direction,[degree]
+EnergyManagementSystem:Actuator Available,ZN001:ROOF001,Surface,View Factor To Ground,[ ]
+EnergyManagementSystem:Actuator Available,ZN001:ROOF001,Surface,Outdoor Air Drybulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:ROOF001,Surface,Outdoor Air Wetbulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,ZN001:ROOF001,Surface,Outdoor Air Wind Speed,[m/s]
+EnergyManagementSystem:Actuator Available,ZN001:ROOF001,Surface,Outdoor Air Wind Direction,[degree]
+EnergyManagementSystem:Actuator Available,MAIN ZONE,Zone,Outdoor Air Drybulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE,Zone,Outdoor Air Wetbulb Temperature,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE,Zone,Outdoor Air Wind Speed,[m/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE,Zone,Outdoor Air Wind Direction,[degree]
+EnergyManagementSystem:Actuator Available,MAIN ZONE,Zone Temperature Control,Heating Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE,Zone Temperature Control,Cooling Setpoint,[C]
+EnergyManagementSystem:Actuator Available,EC PLUG FAN 1,Fan,Fan Air Mass Flow Rate,[kg/s]
+EnergyManagementSystem:Actuator Available,EC PLUG FAN 1,Fan,Fan Pressure Rise,[Pa]
+EnergyManagementSystem:Actuator Available,EC PLUG FAN 1,Fan,Fan Total Efficiency,[fraction]
+EnergyManagementSystem:Actuator Available,EC PLUG FAN 1,Fan,Fan Autosized Air Flow Rate,[m3/s]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1,Coil:Cooling:DX:SingleSpeed,Autosized Rated Air Flow Rate,[m3/s]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1,Coil:Cooling:DX:SingleSpeed,Autosized Rated Sensible Heat Ratio,[W/W]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1,Coil:Cooling:DX:SingleSpeed,Autosized Rated Total Cooling Capacity,[W]
+EnergyManagementSystem:Actuator Available,LIEBERT ECONOPHASE QUADRATIC FIT,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,DATA CENTER SERVERS POWER FLOADTEMP,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,DATA CENTER SERVERS AIRFLOW FLOADTEMP,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,DATA CENTER RECIRCULATION FLOADTEMP,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,HPACCOOLCAPFFF,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,HPACCOOLEIRFFF,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,HPACCOOLPLFFPLR,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,ECM FANPOWER FFLOW,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,UPS EFFICIENCY FPLR,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,COOL CAP MOD FUNC OF TEMPERATURE,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,LIEBERT ECONOPHASE EIR FUNC T,Curve,Curve Result,[unknown]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,SUPPLY INLET NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,SUPPLY OUTLET NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE INLET NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE OUTLET NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT INLET NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Temperature Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Temperature Minimum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Temperature Maximum Setpoint,[C]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Humidity Ratio Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Humidity Ratio Maximum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Humidity Ratio Minimum Setpoint,[kgWater/kgDryAir]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Mass Flow Rate Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Mass Flow Rate Maximum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,MAIN ZONE ATU IN NODE,System Node Setpoint,Mass Flow Rate Minimum Available Setpoint,[kg/s]
+EnergyManagementSystem:Actuator Available,CRAC SYSTEM,AirLoopHVAC,Availability Status,[ ]
+! <EnergyManagementSystem:InternalVariable Available>, Unique Name, Internal Data Type, Units 
+EnergyManagementSystem:InternalVariable Available,MAIN ZONE,Zone Floor Area,[m2]
+EnergyManagementSystem:InternalVariable Available,MAIN ZONE,Zone Air Volume,[m3]
+EnergyManagementSystem:InternalVariable Available,MAIN ZONE,Zone Multiplier,[ ]
+EnergyManagementSystem:InternalVariable Available,MAIN ZONE,Zone List Multiplier,[ ]
+EnergyManagementSystem:InternalVariable Available,EC PLUG FAN 1,Fan Maximum Mass Flow Rate,[kg/s]
+EnergyManagementSystem:InternalVariable Available,EC PLUG FAN 1,Fan Nominal Pressure Rise,[Pa]
+EnergyManagementSystem:InternalVariable Available,EC PLUG FAN 1,Fan Nominal Total Efficiency,[fraction]
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.161641, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,776.782162, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,-423.318303, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,780.906627, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,-0.542085, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,-423.318303, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,780.906627, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.154321, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:07 - 00:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,86170.808454, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6809.220421, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,12.655018, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,86170.808454, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6809.220421, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.068791, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:19 - 00:20
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,70793.639466, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6672.346301, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,10.610006, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,70793.639466, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6672.346301, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.078742, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:25 - 00:30
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340421, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,77020.855485, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6728.320760, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.447262, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,77020.855485, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6728.320760, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.074824, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:30 - 00:40
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340421, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78068.433102, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6737.663542, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.586870, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78068.433102, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6737.663542, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076678, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:40 - 00:50
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340421, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,77924.358563, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6736.379866, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.567690, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,77924.358563, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6736.379866, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076898, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 00:50 - 01:00
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78202.402962, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6738.856833, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.604698, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78202.402962, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6738.856833, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076800, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:00 - 01:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78244.038380, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6739.227616, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.610238, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78244.038380, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6739.227616, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076848, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:10 - 01:20
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78343.714011, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6740.115139, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.623497, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78343.714011, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6740.115139, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076838, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:20 - 01:30
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78399.248967, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6740.609547, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.630884, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78399.248967, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6740.609547, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076856, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:30 - 01:40
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78456.959966, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6741.123264, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.638558, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78456.959966, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6741.123264, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076866, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:40 - 01:50
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78502.698805, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6741.530366, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.644640, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78502.698805, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6741.530366, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076881, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 01:50 - 02:00
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78546.686199, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6741.921841, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.650488, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78546.686199, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6741.921841, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076895, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:00 - 02:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78586.447945, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6742.275677, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.655774, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78586.447945, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6742.275677, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076910, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:10 - 02:20
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78624.020294, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6742.610002, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.660769, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78624.020294, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6742.610002, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076924, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:20 - 02:30
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78659.531303, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6742.925961, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.665489, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78659.531303, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6742.925961, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076939, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:30 - 02:40
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78693.517423, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6743.228329, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.670006, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78693.517423, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6743.228329, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076953, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:40 - 02:50
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78726.171129, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6743.518822, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.674345, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78726.171129, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6743.518822, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076967, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 02:50 - 03:00
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78757.690475, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6743.799204, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.678534, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78757.690475, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6743.799204, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076981, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:00 - 03:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78788.188571, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6744.070483, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.682586, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78788.188571, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6744.070483, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.076994, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:10 - 03:20
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78817.756624, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6744.333473, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.686515, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78817.756624, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6744.333473, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077008, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:20 - 03:30
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78846.458180, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6744.588740, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.690328, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78846.458180, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6744.588740, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077020, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:30 - 03:40
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78874.343470, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6744.836732, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.694033, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78874.343470, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6744.836732, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077033, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:40 - 03:50
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78901.451838, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6745.077801, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.697634, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78901.451838, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6745.077801, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077045, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 03:50 - 04:00
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78927.816035, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6745.312238, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.701136, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78927.816035, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6745.312238, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077057, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:00 - 04:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78953.463994, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6745.540294, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.704542, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78953.463994, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6745.540294, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077068, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:10 - 04:20
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,78978.420408, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6745.762189, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.707857, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,78978.420408, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6745.762189, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077080, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:20 - 04:30
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79002.707613, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6745.978122, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.711082, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79002.707613, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6745.978122, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077091, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:30 - 04:40
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79026.346235, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6746.188278, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.714221, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79026.346235, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6746.188278, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077101, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:40 - 04:50
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79049.355592, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6746.392829, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.717277, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79049.355592, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6746.392829, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077111, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 04:50 - 05:00
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79071.753980, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6746.591939, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.720251, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79071.753980, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6746.591939, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077122, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:00 - 05:10
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79093.558854, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6746.785764, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.723146, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79093.558854, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6746.785764, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077131, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:10 - 05:20
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79114.786963, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6746.974453, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.725965, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79114.786963, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6746.974453, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077141, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:20 - 05:30
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79135.454432, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6747.158150, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.728708, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79135.454432, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6747.158150, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077150, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:30 - 05:40
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79155.576831, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6747.336996, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.731380, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79155.576831, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6747.336996, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077159, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:40 - 05:50
+CALCSCOP,Line 1,SET CPAIR = @CPAIRFNW WOUT_SUPPLYFAN,1006.165073, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCSCOP,Line 2,SET FANSENSHEAT = (MDOT_SUPPLYFAN * CPAIR ) * DELTAT_SUPPLYFAN,5915.340422, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCSCOP,Line 3,SET NUMERATOR = QDOT_DXCOIL_SENS - FANSENSHEAT,79175.169221, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCSCOP,Line 4,SET DENOMINATOR = POWER_DX_COIL_ELEC + POWER_SUPPLYFAN_ELEC,6747.511123, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCSCOP,Line 5,SET SCOP = NUMERATOR / DENOMINATOR,11.733981, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCSCOP,Line 6,SET QDOTNETSENS = NUMERATOR,79175.169221, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCSCOP,Line 7,SET POWERCRAC = DENOMINATOR,6747.511123, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCPUE,Line 1,IF IT_EQUIP_POWER > 0.0,1.000000, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCPUE,Line 2,SET PUE = WHOLE_BUILDING_POWER / IT_EQUIP_POWER,1.077168, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00
+CALCPUE,Line 5,ENDIF,, During Warmup, Occurrence info=DENVER CENTENNIAL ANN HTG 99.6% CONDNS DB, 12/21 05:50 - 06:00

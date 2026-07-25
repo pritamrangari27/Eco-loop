@@ -1,4 +1,4 @@
-Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.07.25 05:56
+Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.07.25 06:31
 1,5,Environment Title[],Latitude[deg],Longitude[deg],Time Zone[],Elevation[m]
 2,8,Day of Simulation[],Month[],Day of Month[],DST Indicator[1=yes 0=no],Hour[],StartMinute[],EndMinute[],DayType
 3,5,Cumulative Day of Simulation[],Month[],Day of Month[],DST Indicator[1=yes 0=no],DayType  ! When Daily Report Variables Requested
@@ -104,4 +104,46 @@ Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.07.25 05:56
 705,1,SUPPLY INLET NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
 706,1,SUPPLY INLET NODE,System Node Setpoint Temperature [C] !Hourly
 707,1,SUPPLY INLET NODE,System Node Relative Humidity [%] !Hourly
-708,1
+708,1,SUPPLY INLET NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly
+709,1,SUPPLY INLET NODE,System Node Dewpoint Temperature [C] !Hourly
+710,1,MAIN COOLING COIL 1 OUTLET NODE,System Node Temperature [C] !Hourly
+711,1,MAIN COOLING COIL 1 OUTLET NODE,System Node Mass Flow Rate [kg/s] !Hourly
+712,1,MAIN COOLING COIL 1 OUTLET NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+713,1,MAIN COOLING COIL 1 OUTLET NODE,System Node Setpoint Temperature [C] !Hourly
+714,1,MAIN COOLING COIL 1 OUTLET NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly
+715,1,MAIN COOLING COIL 1 OUTLET NODE,System Node Dewpoint Temperature [C] !Hourly
+716,1,SUPPLY OUTLET NODE,System Node Temperature [C] !Hourly
+717,1,SUPPLY OUTLET NODE,System Node Mass Flow Rate [kg/s] !Hourly
+718,1,SUPPLY OUTLET NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+719,1,SUPPLY OUTLET NODE,System Node Setpoint Temperature [C] !Hourly
+720,1,SUPPLY OUTLET NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly
+721,1,MAIN ZONE NODE,System Node Temperature [C] !Hourly
+722,1,MAIN ZONE NODE,System Node Mass Flow Rate [kg/s] !Hourly
+723,1,MAIN ZONE NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+724,1,MAIN ZONE NODE,System Node Setpoint Temperature [C] !Hourly
+725,1,MAIN ZONE NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly
+726,1,MAIN ZONE INLET NODE,System Node Temperature [C] !Hourly
+727,1,MAIN ZONE INLET NODE,System Node Mass Flow Rate [kg/s] !Hourly
+728,1,MAIN ZONE INLET NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+729,1,MAIN ZONE INLET NODE,System Node Setpoint Temperature [C] !Hourly
+730,1,MAIN ZONE INLET NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly
+731,1,MAIN ZONE OUTLET NODE,System Node Temperature [C] !Hourly
+732,1,MAIN ZONE OUTLET NODE,System Node Mass Flow Rate [kg/s] !Hourly
+733,1,MAIN ZONE OUTLET NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+734,1,MAIN ZONE OUTLET NODE,System Node Setpoint Temperature [C] !Hourly
+735,1,MAIN ZONE OUTLET NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly
+736,1,ZONE EQUIPMENT INLET NODE,System Node Temperature [C] !Hourly
+737,1,ZONE EQUIPMENT INLET NODE,System Node Mass Flow Rate [kg/s] !Hourly
+738,1,ZONE EQUIPMENT INLET NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+739,1,ZONE EQUIPMENT INLET NODE,System Node Setpoint Temperature [C] !Hourly
+740,1,ZONE EQUIPMENT INLET NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly
+741,1,ZONE EQUIPMENT OUTLET NODE,System Node Temperature [C] !Hourly
+742,1,ZONE EQUIPMENT OUTLET NODE,System Node Mass Flow Rate [kg/s] !Hourly
+743,1,ZONE EQUIPMENT OUTLET NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+744,1,ZONE EQUIPMENT OUTLET NODE,System Node Setpoint Temperature [C] !Hourly
+745,1,ZONE EQUIPMENT OUTLET NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly
+746,1,MAIN ZONE ATU IN NODE,System Node Temperature [C] !Hourly
+747,1,MAIN ZONE ATU IN NODE,System Node Mass Flow Rate [kg/s] !Hourly
+748,1,MAIN ZONE ATU IN NODE,System Node Humidity Ratio [kgWater/kgDryAir] !Hourly
+749,1,MAIN ZONE ATU IN NODE,System Node Setpoint Temperature [C] !Hourly
+750,1,MAIN ZONE ATU IN NODE,System Node Standard Density Volume Flow Rate [m3/s] !Hourly

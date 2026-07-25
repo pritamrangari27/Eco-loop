@@ -1,12 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Clock Logic
+    function updateClock() {
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        
+        const day = now.getDate();
+        const month = now.toLocaleString('en-US', { month: 'short' });
+        const year = now.getFullYear();
+        const dateStr = `${day} ${month} ${year}`;
+        
+        document.getElementById('clock-time').innerText = timeStr;
+        document.getElementById('clock-date').innerText = dateStr;
+        document.getElementById('last-sync').innerText = `Last Sync: ${timeStr}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
     // Handle File Upload
     const uploadForm = document.getElementById('upload-form');
     const uploadStatus = document.getElementById('upload-status');
     if (uploadForm) {
         uploadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            uploadStatus.innerText = "Uploading and initializing simulation...";
-            uploadStatus.style.color = "var(--accent)";
+            uploadStatus.innerText = "Initializing...";
+            uploadStatus.style.color = "var(--primary)";
             
             const formData = new FormData();
             formData.append('epw_file', document.getElementById('epw-file').files[0]);
@@ -19,29 +39,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 const result = await res.json();
                 if (res.ok) {
-                    uploadStatus.innerText = "Simulation initialized successfully! Loop starting...";
+                    uploadStatus.innerText = "System Autonomous";
                     uploadStatus.style.color = "var(--success)";
                 } else {
                     uploadStatus.innerText = "Error: " + result.error;
-                    uploadStatus.style.color = "var(--warning)";
+                    uploadStatus.style.color = "var(--danger)";
                 }
             } catch (err) {
-                uploadStatus.innerText = "Network error during upload.";
-                uploadStatus.style.color = "var(--warning)";
-                console.error(err);
+                uploadStatus.innerText = "Network error";
+                uploadStatus.style.color = "var(--danger)";
             }
         });
     }
 
-    // Initialize Chart.js
-    const ctx = document.getElementById('energyChart').getContext('2d');
-    
-    // Gradient for the chart
-    let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(56, 189, 248, 0.5)');
-    gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+    // Chart.js Globals
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.color = "#6B7280";
+    Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(27, 35, 32, 0.9)';
 
-    const chartConfig = {
+    // Energy Line Chart
+    const energyCtx = document.getElementById('energyChart');
+    const energyChartConfig = {
         type: 'line',
         data: {
             labels: [],
@@ -49,9 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     label: 'Baseline Energy (kWh)',
                     data: [],
-                    borderColor: '#f59e0b',
-                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    borderColor: '#9CA3AF',
                     borderWidth: 2,
+                    borderDash: [5, 5],
                     fill: false,
                     tension: 0.4,
                     pointRadius: 0
@@ -59,10 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     label: 'AI Optimized (kWh)',
                     data: [],
-                    borderColor: '#38bdf8',
-                    backgroundColor: gradient,
+                    borderColor: '#16A34A',
                     borderWidth: 2,
-                    fill: true,
+                    fill: false,
                     tension: 0.4,
                     pointRadius: 0
                 }
@@ -72,39 +89,97 @@ document.addEventListener("DOMContentLoaded", () => {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: true, labels: { color: '#94a3b8' } }
-            },
-            scales: {
-                x: {
-                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                    ticks: { color: '#94a3b8' }
-                },
-                y: {
-                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                    ticks: { color: '#94a3b8' }
+                legend: { 
+                    display: true, 
+                    position: 'top',
+                    align: 'start',
+                    labels: { boxWidth: 20, usePointStyle: true, pointStyle: 'line' } 
                 }
             },
-            animation: {
-                duration: 400
-            }
+            scales: {
+                x: { grid: { display: false }, ticks: { maxTicksLimit: 6 } },
+                y: { grid: { color: '#E7E8EB' }, beginAtZero: true }
+            },
+            animation: { duration: 400 }
         }
     };
-    
-    const energyChart = new Chart(ctx, chartConfig);
+    let energyChart = energyCtx ? new Chart(energyCtx, energyChartConfig) : null;
+
+    // PMV Gauge Chart (Doughnut)
+    const gaugeCtx = document.getElementById('gaugeChart');
+    const gaugeConfig = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [0, 6], // Dynamic [value, remaining] (total scale 6, from -3 to +3)
+                backgroundColor: ['#16A34A', '#E7E8EB'],
+                borderWidth: 0,
+                cutout: '80%',
+                circumference: 180,
+                rotation: 270
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { enabled: false } },
+            animation: { duration: 600 }
+        }
+    };
+    let gaugeChart = gaugeCtx ? new Chart(gaugeCtx, gaugeConfig) : null;
+
+    function getComfortStatus(pmv) {
+        if (pmv > 1.5 || pmv < -1.5) return ["Uncomfortable", "var(--danger)"];
+        if (pmv > 0.5 || pmv < -0.5) return ["Moderate", "var(--warning)"];
+        return ["Comfortable", "var(--success)"];
+    }
 
     // Update Dashboard UI
     function updateDashboard(data) {
         if (!data || !data.telemetry) return;
 
-        // Telemetry
-        document.getElementById('indoor-temp').innerText = `${data.telemetry.indoor_temp}°C`;
-        document.getElementById('outdoor-temp').innerText = `${data.telemetry.outdoor_temp}°C`;
-        document.getElementById('energy').innerText = `${data.telemetry.energy} kWh`;
-        document.getElementById('carbon').innerText = `${data.telemetry.carbon_emissions || 0} kgCO2`;
-        document.getElementById('occupancy').innerText = data.telemetry.occupancy;
-        document.getElementById('pmv').innerText = data.telemetry.pmv;
-        document.getElementById('iaq').innerText = data.telemetry.iaq_co2 || '--';
-        document.getElementById('hvac-status').innerText = data.telemetry.hvac_status;
+        const t = data.telemetry;
+        
+        // Top Metrics
+        document.getElementById('indoor-temp').innerText = `${t.indoor_temp.toFixed(2)}°C`;
+        document.getElementById('outdoor-temp').innerText = `${t.outdoor_temp.toFixed(1)}°C`;
+        document.getElementById('energy').innerText = `${t.energy.toFixed(1)} kWh`;
+        document.getElementById('occupancy').innerText = t.occupancy;
+        document.getElementById('pmv').innerText = t.pmv.toFixed(1);
+        document.getElementById('hvac-status').innerText = t.hvac_status;
+
+        // Dynamic statuses
+        const [pmvText, pmvColor] = getComfortStatus(t.pmv);
+        document.getElementById('pmv-status').innerText = pmvText;
+        document.getElementById('pmv-status').style.color = pmvColor;
+        document.getElementById('indoor-status').innerText = pmvText;
+        document.getElementById('indoor-status').style.color = pmvColor;
+
+        // Bottom Env Row
+        document.getElementById('humidity').innerText = '62%';
+        document.getElementById('iaq').innerText = `${t.iaq_co2 || 400} ppm`;
+        document.getElementById('carbon').innerText = `${(t.carbon_emissions || 0).toFixed(1)} kgCO2`;
+
+        // Update Gauge
+        if (gaugeChart) {
+            // Scale -3 to +3 maps to 0 to 6
+            let mappedVal = t.pmv + 3;
+            if (mappedVal < 0) mappedVal = 0;
+            if (mappedVal > 6) mappedVal = 6;
+            
+            // Color based on value
+            let color = '#16A34A';
+            if (mappedVal < 1.5 || mappedVal > 4.5) color = '#EF4444';
+            else if (mappedVal < 2.5 || mappedVal > 3.5) color = '#F59E0B';
+            
+            gaugeChart.data.datasets[0].data = [mappedVal, 6 - mappedVal];
+            gaugeChart.data.datasets[0].backgroundColor = [color, '#E7E8EB'];
+            gaugeChart.update();
+            
+            document.getElementById('gauge-val').innerText = t.pmv.toFixed(1);
+            document.getElementById('gauge-status').innerText = pmvText;
+            document.getElementById('gauge-status').style.color = color;
+        }
 
         // AI Panel
         if (data.ai) {
@@ -115,13 +190,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Load History and initialize chart & logs
+    // Load History
     async function fetchHistory() {
         try {
             const res = await fetch('/api/history');
             const history = await res.json();
             
-            const logContainer = document.getElementById('decision-log');
+            const logContainer = document.getElementById('log-timeline');
             if(!logContainer) return;
             logContainer.innerHTML = '';
             
@@ -131,11 +206,10 @@ document.addEventListener("DOMContentLoaded", () => {
             let totalSaved = 0;
             let totalBaseline = 0;
 
-            // History comes ordered DESC from DB, reverse for chart (oldest first)
             const chartData = [...history].reverse();
             
             chartData.forEach(row => {
-                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
+                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
                 labels.push(timeStr);
                 energyData.push(row.energy);
                 baselineData.push(row.baseline_energy || row.energy);
@@ -145,45 +219,64 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             // Update Chart
-            energyChart.data.labels = labels;
-            energyChart.data.datasets[0].data = baselineData;
-            energyChart.data.datasets[1].data = energyData;
-            energyChart.update();
+            if (energyChart) {
+                energyChart.data.labels = labels;
+                energyChart.data.datasets[0].data = baselineData;
+                energyChart.data.datasets[1].data = energyData;
+                energyChart.update();
+            }
             
             // Update Totals
-            document.getElementById('total-saved').innerText = totalSaved.toFixed(1);
+            document.getElementById('total-saved').innerText = `${totalSaved.toFixed(1)} kWh`;
+            document.getElementById('monthly-saved').innerText = `~${(totalSaved * 30).toFixed(0)} kWh`;
             if (totalBaseline > 0) {
                 const percent = (totalSaved / totalBaseline) * 100;
-                document.getElementById('percent-saved').innerText = percent.toFixed(1);
+                document.getElementById('percent-saved').innerText = `${percent.toFixed(1)}%`;
             }
 
-            // Populate Logs (newest first)
-            history.forEach(row => {
-                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
-                const logEntry = `
-                    <div class="log-entry" style="margin-bottom:10px; border-bottom:1px solid #334155; padding-bottom:5px;">
-                        <div class="log-time">${timeStr}</div>
-                        <strong>Strategy:</strong> ${row.strategy}<br>
-                        <strong>Action:</strong> ${row.action}<br>
-                        <strong>Savings:</strong> <span style="color: var(--success);">+${row.estimated_savings || 0} kWh</span><br>
-                        <em>${row.reason}</em>
+            // Horizontal Log Render (Take top 5 recent)
+            const recentLogs = history.slice(0, 5).reverse();
+            
+            recentLogs.forEach((row, index) => {
+                const timeStr = new Date(row.timestamp.replace(' ', 'T') + 'Z').toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                
+                let iconName = 'activity';
+                if (row.strategy.includes("Balanced")) iconName = 'scale';
+                if (row.strategy.includes("Comfort")) iconName = 'smile';
+                if (row.strategy.includes("Energy")) iconName = 'zap';
+
+                const logItem = `
+                    <div class="log-step">
+                        <div class="log-step-content">
+                            <div class="log-icon">
+                                <i data-lucide="${iconName}" size="16"></i>
+                            </div>
+                            <div class="log-text">
+                                <h5>${timeStr}</h5>
+                                <p>${row.strategy}<br><span style="color:var(--text-muted);font-weight:400;">${row.action}</span></p>
+                            </div>
+                        </div>
+                        ${index < recentLogs.length - 1 ? `<div class="log-arrow"><i data-lucide="arrow-right" size="16"></i></div>` : ''}
                     </div>
                 `;
-                logContainer.insertAdjacentHTML('beforeend', logEntry);
+                logContainer.insertAdjacentHTML('beforeend', logItem);
             });
+            lucide.createIcons(); // Re-init icons for new HTML
             
         } catch (error) {
             console.error("Error fetching history:", error);
         }
     }
 
-    // Poll status every 2 seconds
+    // Polling
     setInterval(async () => {
         try {
             const res = await fetch('/api/status');
             const data = await res.json();
+            if (Object.keys(data).length === 0) return;
+            
             updateDashboard(data);
-            fetchHistory(); // Refresh charts and logs
+            fetchHistory();
         } catch (error) {
             console.error("Error fetching status:", error);
         }

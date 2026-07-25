@@ -18,11 +18,10 @@ simulation_ready = threading.Event()
 
 def autonomous_control_loop():
     global current_state
+    print("Waiting for simulation files to be uploaded...")
+    simulation_ready.wait()
+    print("Starting Autonomous Control Loop with real EnergyPlus data...")
     while True:
-        if not simulation_ready.is_set():
-            print("Waiting for simulation files to be uploaded...")
-            simulation_ready.wait()
-            print("Starting Autonomous Control Loop with real EnergyPlus data...")
         try:
             print("[LOOP] 1. Advancing simulator step...")
             # 1. Simulator steps forward
@@ -115,8 +114,6 @@ def upload_files():
 
 @app.route('/api/status')
 def status():
-    if not simulation_ready.is_set():
-        return jsonify({})
     return jsonify(current_state)
 
 @app.route('/api/history')
