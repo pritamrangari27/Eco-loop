@@ -75,3 +75,24 @@ eco-loop-ai/
 ---
 *Built for the Autonomous Smart Buildings Hackathon.*
 
+<img width="1897" height="871" alt="image" src="https://github.com/user-attachments/assets/b872f37e-f563-4151-b3d6-a18a7becc5d2" />
+
+<img width="1896" height="876" alt="image" src="https://github.com/user-attachments/assets/fb7b6fb5-55ee-4377-88aa-d0195155f86b" />
+
+<img width="1895" height="865" alt="image" src="https://github.com/user-attachments/assets/d84ff9d8-3159-4288-8a6b-b18e9791bd4d" />
+
+<img width="1902" height="871" alt="image" src="https://github.com/user-attachments/assets/c359ef40-f818-443c-87b9-b06bec01cd18" />
+
+<img width="1902" height="871" alt="image" src="https://github.com/user-attachments/assets/07af71ac-6867-4ea5-b1d4-e8ff26317e64" />
+
+<img width="1896" height="867" alt="image" src="https://github.com/user-attachments/assets/963835c8-2d76-4de9-ac92-b6d8df30af22" />
+
+<img width="1917" height="871" alt="image" src="https://github.com/user-attachments/assets/c397ae14-a914-45b2-842a-8b0e8940ca71" />
+
+
+
+
+
+
+
+
