@@ -112,7 +112,7 @@ eco-loop-ai/
 
 <img width="1902" height="871" alt="image" src="https://github.com/user-attachments/assets/c359ef40-f818-443c-87b9-b06bec01cd18" />
 
-<img width="1902" height="871" alt="image" src="https://github.com/user-attachments/assets/07af71ac-6867-4ea5-b1d4-e8ff26317e64" />
+<!-- <img width="1902" height="871" alt="image" src="https://github.com/user-attachments/assets/07af71ac-6867-4ea5-b1d4-e8ff26317e64" /> -->
 
 <img width="1896" height="867" alt="image" src="https://github.com/user-attachments/assets/963835c8-2d76-4de9-ac92-b6d8df30af22" />
 
