@@ -1,4 +1,4 @@
-# 🌿 Eco-Loop AI
+# Eco-Loop AI
 
 Eco-Loop AI is an autonomous, physical AI proof-of-concept that dynamically manages building operations to optimize energy consumption while maintaining occupant comfort.
 
@@ -6,13 +6,13 @@ By integrating the high-fidelity **EnergyPlus** simulation engine with an **Open
 
 ---
 
-## 🎯 Hackathon Objectives Met
+## Hackathon Objectives Met
 - **Closed-Loop Execution:** Streams live performance metrics (temperatures, IAQ, PMV) from EnergyPlus to the LLM, evaluating them against dynamic targets, and executing safe HVAC setpoint overrides automatically.
 - **Cognitive Agent & MCP Integration:** Utilizes local LLMs capable of tool-calling to extract simulation metadata and dynamically adjust parameters without human code modification.
 - **Quantitative Savings Dashboard:** Features a responsive, modern UI comparing baseline energy consumption against AI-optimized strategies, calculating net-reductions in kWh.
 - **Safety & Fallback Mechanisms:** A validation layer ensuring the LLM's decisions maintain thermal comfort and never breach hard safety constraints.
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```mermaid
 graph TD
